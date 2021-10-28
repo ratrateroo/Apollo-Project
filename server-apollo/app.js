@@ -1,16 +1,26 @@
 //Imports
 const express = require('express');
-const { ApolloServer, gql } = require('apollo-server-express');
+const { ApolloServer, gql, GraphQLUpload } = require('apollo-server-express');
 const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const url = `mongodb://127.0.0.1:27017/${process.env.MONGO_DB}`;
 
+const { Schema, model } = mongoose;
+
 const {
 	GraphQLUpload,
 	graphqlUploadExpress, // A Koa implementation is also exported.
 } = require('graphql-upload');
+
+//Models
+const fileSchema = new Schema({
+	filename: String,
+	mimetype: String,
+	path: String,
+});
+const fileModel = model('File', fileSchema);
 
 //Type Definitions
 const typeDefs = gql`
@@ -20,9 +30,10 @@ const typeDefs = gql`
 	scalar Upload
 
 	type File {
-		# filename: String!
-		# mimetype: String!
-		# encoding: String!
+		id: ID!
+		filename: String!
+		mimetype: String!
+		encoding: String!
 		url: String!
 	}
 
@@ -32,6 +43,7 @@ const typeDefs = gql`
 		# demonstrate how to fetch uploads back.
 		# otherFields: Boolean!
 		hello: String!
+		files: [File]
 	}
 
 	type Mutation {
@@ -87,10 +99,19 @@ const startServer = async () => {
 
 	const app = express();
 
-	app.use(cors());
+	app.use(express.urlencoded({ extended: true }));
+	app.use(express.json());
+
+	const dir = path.join(process.cwd(), 'images');
+	console.log(dir);
+
+	//app.use(express.static(dir));
+	//app.use('/images', express.static(dir)); // serve all files in the /images directory
 
 	// This middleware should be added before calling `applyMiddleware`.
 	app.use(graphqlUploadExpress());
+
+	app.use(cors());
 
 	server.applyMiddleware({
 		app,
