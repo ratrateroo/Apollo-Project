@@ -1,3 +1,4 @@
+//Imports
 const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
 const path = require('path');
@@ -60,3 +61,38 @@ const resolvers = {
 		},
 	},
 };
+
+const startServer = async () => {
+	console.log('Server Starting...');
+
+	const server = new ApolloServer({
+		typeDefs,
+		resolvers,
+	});
+
+	await server.start();
+
+	const app = express();
+
+	app.use(cors());
+
+	// This middleware should be added before calling `applyMiddleware`.
+	app.use(graphqlUploadExpress());
+
+	server.applyMiddleware({
+		app,
+		//cors: { credentials: 'same-origin', origin: 'http://localhost:3000/' },
+	});
+
+	app.use(express.static('public'));
+
+	//await new Promise((r) => app.listen({ port: 4000 }, r));
+
+	app.listen({ port: 4000 }, () => {
+		console.log(
+			`🚀 Server ready at http://localhost:4000${server.graphqlPath}`
+		);
+	});
+};
+
+startServer();
