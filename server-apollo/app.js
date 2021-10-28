@@ -4,6 +4,9 @@ const { ApolloServer, gql } = require('apollo-server-express');
 const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
+const mongoose = require('mongoose');
+const url = `mongodb://127.0.0.1:27017/${process.env.MONGO_DB}`;
+
 const {
 	GraphQLUpload,
 	graphqlUploadExpress, // A Koa implementation is also exported.
@@ -64,6 +67,16 @@ const resolvers = {
 
 const startServer = async () => {
 	console.log('Server Starting...');
+
+	//Database Connection
+	await mongoose
+		.connect(url, {
+			useNewUrlParser: true,
+			useUnifiedTopology: true,
+		})
+		.then(() => {
+			console.log('Connected 🚀 To MongoDB Successfully');
+		});
 
 	const server = new ApolloServer({
 		typeDefs,
