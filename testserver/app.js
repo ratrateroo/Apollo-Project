@@ -11,6 +11,8 @@ const typeDefs = gql`
 
 	type Query {
 		uploads: [File]
+		hello: String!
+		hi: String!
 	}
 
 	type Mutation {
@@ -22,6 +24,8 @@ const resolvers = {
 	// FileUpload: GraphQLUpload,
 	Query: {
 		uploads: (parent, args) => {},
+		hello: () => 'Hello World',
+		hi: () => 'Hi  There',
 	},
 	Mutation: {
 		singleUpload: async (_, { file }) => {
