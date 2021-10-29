@@ -1,58 +1,60 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-	ApolloClient,
-	InMemoryCache,
-	ApolloProvider,
-	gql,
-	useMutation,
-	ApolloLink,
-} from '@apollo/client';
-import { createUploadLink } from 'apollo-upload-client';
+// import {
+// 	ApolloClient,
+// 	InMemoryCache,
+// 	ApolloProvider,
+// 	gql,
+// 	useMutation,
+// 	ApolloLink,
+// } from '@apollo/client';
+// import { createUploadLink } from 'apollo-upload-client';
 
-const httpLink = createUploadLink({
-	uri: 'http://localhost:4000/',
-});
+import { Upload } from './components/Upload';
+import { Files } from './components/Files';
 
-const client = new ApolloClient({
-	link: httpLink,
-	cache: new InMemoryCache(),
-});
+// const httpLink = createUploadLink({
+// 	uri: 'http://localhost:4000/',
+// });
 
-const UPLOAD_FILE = gql`
-	mutation singleUpload($file: FileUpload!) {
-		singleUpload(file: $file) {
-			filename
-			mimetype
-			encoding
-		}
-	}
-`;
+// const client = new ApolloClient({
+// 	link: httpLink,
+// 	cache: new InMemoryCache(),
+// });
 
-function FileInput() {
-	const [singleUpload] = useMutation(UPLOAD_FILE);
+// const UPLOAD_FILE = gql`
+// 	mutation singleUpload($file: FileUpload!) {
+// 		singleUpload(file: $file) {
+// 			filename
+// 			mimetype
+// 			encoding
+// 		}
+// 	}
+// `;
 
-	return (
-		<input
-			type="file"
-			required
-			onChange={({
-				target: {
-					validity,
-					files: [file],
-				},
-			}) => validity.valid && singleUpload({ variables: { file } })}
-		/>
-	);
-}
+// function FileInput() {
+// 	const [singleUpload] = useMutation(UPLOAD_FILE);
+
+// 	return (
+// 		<input
+// 			type="file"
+// 			required
+// 			onChange={({
+// 				target: {
+// 					validity,
+// 					files: [file],
+// 				},
+// 			}) => validity.valid && singleUpload({ variables: { file } })}
+// 		/>
+// 	);
+// }
 
 function App() {
 	return (
-		<ApolloProvider client={client}>
-			<div>
-				<FileInput />
-			</div>
-		</ApolloProvider>
+		<div>
+			<Upload />
+			<Files />
+		</div>
 	);
 }
 
