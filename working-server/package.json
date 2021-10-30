@@ -1,0 +1,20 @@
+{
+	"name": "working-server",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "nodemon workingserver.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"nodemon": "^2.0.14"
+	},
+	"dependencies": {
+		"apollo-server-express": "^3.4.0",
+		"graphql-upload": "^12.0.0"
+	}
+}
