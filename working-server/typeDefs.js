@@ -6,7 +6,7 @@ const typeDefs = gql`
 	scalar Upload
 
 	type Query {
-		files: String
+		files: [String]
 	}
 
 	type File {
@@ -16,7 +16,7 @@ const typeDefs = gql`
 	}
 
 	type Mutation {
-		uploadFile(file: Upload!): String
+		uploadFile(file: Upload!): File
 	}
 `;
 

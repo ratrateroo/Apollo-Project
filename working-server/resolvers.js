@@ -1,7 +1,8 @@
-const storeUpload = require('./storeUpload');
+const { storeUpload } = require('./storeUpload');
+const { files } = require('./files');
 const resolvers = {
 	Query: {
-		files: () => 'filestring',
+		files: () => files,
 	},
 	Mutation: {
 		uploadFile: (parent, { file }) => storeUpload(file),

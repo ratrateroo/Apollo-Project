@@ -4,7 +4,7 @@ const storeUpload = async (file) => {
 	console.log(filename);
 	console.log(mimetype);
 	console.log(encoding);
-	return 'hello';
+	return { filename, mimetype, encoding };
 };
 
 exports.storeUpload = storeUpload;
