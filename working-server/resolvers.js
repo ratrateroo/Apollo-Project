@@ -1,4 +1,4 @@
-const { storeUpload } = require('./storeUpload');
+const storeUpload = require('./storeUpload');
 const files = require('./files');
 const resolvers = {
 	Query: {
