@@ -13,7 +13,7 @@ const startServer = async () => {
 	const app = express();
 	app.use(graphqlUploadExpress());
 	apolloserver.applyMiddleware({ app });
-	//console.log(path.join(__dirname, './images'));
+	//Create images folder
 	createDirectory('images');
 	app.use(express.static('public'));
 	app.listen({ port: 4000 }, () => {
