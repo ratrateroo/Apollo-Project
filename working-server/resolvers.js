@@ -1,5 +1,5 @@
 const { storeUpload } = require('./storeUpload');
-const { files } = require('./files');
+const files = require('./files');
 const resolvers = {
 	Query: {
 		files: () => files,
@@ -9,4 +9,4 @@ const resolvers = {
 	},
 };
 
-exports.resolvers = resolvers;
+module.exports = resolvers;

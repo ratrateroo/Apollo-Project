@@ -1,3 +1,3 @@
 const files = [];
 
-exports.files = files;
+module.exports = files;

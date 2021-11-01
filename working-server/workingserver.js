@@ -2,7 +2,8 @@ const express = require('express');
 
 //import apollo server
 const { graphqlUploadExpress } = require('graphql-upload');
-const { apolloserver } = require('./apolloserver');
+
+const apolloserver = require('./apolloserver');
 const { createDirectory } = require('./createDirectory');
 
 //Server Definitions

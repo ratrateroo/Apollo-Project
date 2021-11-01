@@ -7,4 +7,4 @@ const storeUpload = async (file) => {
 	return { filename, mimetype, encoding };
 };
 
-exports.storeUpload = storeUpload;
+module.exports = storeUpload;
