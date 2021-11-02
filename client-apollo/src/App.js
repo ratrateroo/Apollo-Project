@@ -12,6 +12,7 @@ import ReactDOM from 'react-dom';
 
 import { Upload } from './components/Upload';
 import { Files } from './components/Files';
+import InputUpload from './components/InputUpload';
 
 // const httpLink = createUploadLink({
 // 	uri: 'http://localhost:4000/',
@@ -54,6 +55,7 @@ function App() {
 		<div>
 			<Upload />
 			<Files />
+			<InputUpload />
 		</div>
 	);
 }

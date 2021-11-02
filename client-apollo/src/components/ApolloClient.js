@@ -1,5 +1,5 @@
-import { ApolloClient } from '@apollo/client';
-import { InMemoryCache } from '@apollo/client';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+
 import { createUploadLink } from 'apollo-upload-client';
 
 const link = createUploadLink({
