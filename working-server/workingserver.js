@@ -5,6 +5,9 @@ const { graphqlUploadExpress } = require('graphql-upload');
 
 const apolloserver = require('./apolloserver');
 const createDirectory = require('./createDirectory');
+const readFileNames = require('./readFileNames');
+
+const fileNameReader = require('./readFileNames');
 
 // //testStoreFileSystem function
 
@@ -32,6 +35,8 @@ const startServer = async () => {
 	// 	filename: 'filename',
 	// 	mimetype: 'mimetype',
 	// });
+
+	fileNameReader();
 };
 //Starting the Server
 console.log('Server Starting...');
