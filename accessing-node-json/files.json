@@ -1,0 +1,5 @@
+{
+	"files": ["file1", "file2"],
+	"filecount": 2,
+	"about": "file name list"
+}
