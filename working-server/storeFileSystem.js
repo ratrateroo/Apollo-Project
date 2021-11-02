@@ -16,7 +16,9 @@ const storeFileSystem = ({ stream, filename, mimetype }) => {
 		`./public/images/${storedFileName}`
 	);
 
+	console.log(storedFileName);
 	console.log(storedFileUrl);
+	console.log(stream);
 
 	//storedFileUrl - file upload directory + filename
 };
