@@ -24,4 +24,4 @@ const createDirectory = (foldername) => {
 		}
 	});
 };
-exports.createDirectory = createDirectory;
+module.exports = createDirectory;

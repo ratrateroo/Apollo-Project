@@ -4,7 +4,7 @@ const express = require('express');
 const { graphqlUploadExpress } = require('graphql-upload');
 
 const apolloserver = require('./apolloserver');
-const { createDirectory } = require('./createDirectory');
+const createDirectory = require('./createDirectory');
 
 // //testStoreFileSystem function
 

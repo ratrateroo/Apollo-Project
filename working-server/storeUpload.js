@@ -19,7 +19,12 @@ const storeUpload = async (file) => {
 	}
 	const stream = createReadStream();
 	//console.log(stream);
-	return storeFileSystem({ stream, mimetype, filename });
+	return storeFileSystem({
+		stream: stream,
+		mimetype: mimetype,
+		filename: filename,
+		encoding: encoding,
+	});
 };
 
 module.exports = storeUpload;
