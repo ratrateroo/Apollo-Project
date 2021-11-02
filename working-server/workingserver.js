@@ -20,7 +20,7 @@ const startServer = async () => {
 	apolloserver.applyMiddleware({ app });
 	//Create images folder
 	createDirectory('images');
-	app.use(express.static('public'));
+	app.use('/freefiles', express.static('public'));
 	app.listen({ port: 4000 }, () => {
 		console.log(
 			`🚀  Server ready at http://localhost:4000/${apolloserver.graphqlPath}`

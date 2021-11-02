@@ -8,7 +8,11 @@ import { filesQuery } from './Files';
 
 const uploadFileMutation = gql`
 	mutation UploadFile($file: Upload!) {
-		uploadFile(file: $file)
+		uploadFile(file: $file) {
+			filename
+			mimetype
+			encoding
+		}
 	}
 `;
 

@@ -24,7 +24,7 @@ export const Files = () => {
 					<img
 						style={{ width: 200 }}
 						key={x}
-						src={`http://localhost:4000/images/${x}`}
+						src={`http://localhost:4000/freefiles/images/${x}`}
 						alt={x}
 					/>
 				);
