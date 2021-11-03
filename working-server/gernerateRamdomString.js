@@ -9,4 +9,4 @@ const generateRandomString = (length) => {
 	return result;
 };
 
-module.export = generateRandomString;
+module.exports = generateRandomString;

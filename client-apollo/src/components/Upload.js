@@ -1,9 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-//old import gql from 'graphql-tag';
-import { gql } from '@apollo/client';
-//old import { useMutation } from '@apollo/react-hooks';
-import { useMutation } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
+
 import { filesQuery } from './Files';
 
 const uploadFileMutation = gql`
@@ -16,7 +14,7 @@ const uploadFileMutation = gql`
 	}
 `;
 
-export const Upload = () => {
+const Upload = () => {
 	const [uploadFile] = useMutation(uploadFileMutation, {
 		refetchQueries: [{ query: filesQuery }],
 	});
@@ -41,3 +39,5 @@ export const Upload = () => {
 		</div>
 	);
 };
+
+export default Upload;
