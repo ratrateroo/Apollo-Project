@@ -2,14 +2,25 @@ const shortId = require('shortid');
 const path = require('path');
 const { createWriteStream, unlink } = require('fs');
 
+const generateRandomString = require('./gernerateRamdomString');
+
 const files = require('./files');
 //root directory __dirname
 //file upload directory /public/images
 
 const storeFileSystem = async ({ stream, filename, mimetype, encoding }) => {
-	const id = shortId.generate();
+	//const id = shortId.generate();
 
-	const storedFileName = `${id}-${filename}`;
+	//const storedFileName = `${id}-${filename}`;
+
+	//new storedFileName
+	//get extension name and file name
+	const { ext, name } = path.parse(filename);
+
+	//generate new storedFileName
+
+	const storedFileName = generateRandomString(12) + ext;
+
 	const newurl = new URL(path.join(__dirname, './public/images'));
 	// console.log(newurl.href);
 	// console.log(new URL(path.join(__dirname, './public/images')).href);

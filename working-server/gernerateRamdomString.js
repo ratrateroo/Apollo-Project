@@ -9,6 +9,4 @@ const generateRandomString = (length) => {
 	return result;
 };
 
-console.log(makeid(5));
-
 module.export = generateRandomString;
