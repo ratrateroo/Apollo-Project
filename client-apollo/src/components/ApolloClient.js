@@ -7,7 +7,6 @@ const link = createUploadLink({
 	// credentials: 'include',
 });
 
-console.log(link);
 export const client = new ApolloClient({
 	link: link,
 	cache: new InMemoryCache(),

@@ -9,6 +9,12 @@ const typeDefs = gql`
 		files: [String]
 	}
 
+	type User {
+		_id: ID!
+		username: String!
+		profileimage: String!
+	}
+
 	type File {
 		filename: String!
 		mimetype: String!
