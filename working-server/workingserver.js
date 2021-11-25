@@ -5,6 +5,9 @@ const apolloserver = require('./apolloserver');
 const createDirectory = require('./createDirectory');
 const fileNameReader = require('./readFileNames');
 
+const mongoose = require('mongoose');
+const url = `mongodb://127.0.0.1:27017/${process.env.MONGO_DB}`;
+
 // //testStoreFileSystem function
 
 // const storeFileSystem = require('./storeFileSystem');
@@ -13,6 +16,16 @@ const fileNameReader = require('./readFileNames');
 const startServer = async () => {
 	try {
 		console.log('This is the server.');
+
+		await mongoose
+			.connect(url, {
+				useNewUrlParser: true,
+				useUnifiedTopology: true,
+			})
+			.then(() => {
+				console.log('Connected 🚀 To MongoDB Successfully');
+			});
+
 		//Start Apollo Server
 		await apolloserver.start();
 		const app = express();
