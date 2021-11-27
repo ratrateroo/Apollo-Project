@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 
 const SignUp = () => {
-	const [username, setUsername] = useState();
+	const [{ username }, setUsername] = useState({ username: '' });
 	const submitHandler = (event) => {
 		event.preventDefault();
-		setUsername(event.target.value);
-		console.log(username);
+		setUsername((currentState) => {
+			return {
+				...currentState,
+				username: event.target.value,
+			};
+		});
 	};
 	return (
 		<div>
@@ -14,13 +18,13 @@ const SignUp = () => {
 				<input type="text" placeholder="Enter Username" name="username" />
 				<button type="submit">Sign Up</button>
 			</form> */}
-			{/* <h1>{username.value}</h1> */}
+			<h1>{username}</h1>
 			<form onSubmit={submitHandler}>
 				<label>
 					Name:
-					<input type="text" />
+					<input type="text" name="username" />
 				</label>
-				<input type="submit" value="Submit" />
+				<button type="submit">Submit</button>
 			</form>
 		</div>
 	);
