@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const storeUpload = require('./storeUpload');
 const files = require('./files');
 
@@ -26,15 +27,23 @@ const resolvers = {
 				});
 
 				const result = await user.save();
+
+				const token = jwt.sign(
+					{ userId: result.id, email: user.email },
+					'secretkeyforhashing',
+					{
+						expiresIn: '1h',
+					}
+				);
+
+				return {
+					userId: result._id,
+					token: token,
+					tokenExpiration: 1,
+				};
 			} catch (error) {
 				console.log(error);
 			}
-
-			return {
-				userId: 'userId',
-				token: 'token',
-				tokenExpiration: 10,
-			};
 		},
 	},
 };
