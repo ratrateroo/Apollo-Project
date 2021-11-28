@@ -1,28 +1,27 @@
 import React, { useState } from 'react';
-
 const SignUp = () => {
-	const [{ username }, setUsername] = useState({ username: '' });
-	const submitHandler = (event) => {
-		event.preventDefault();
-		setUsername((currentState) => {
-			return {
-				...currentState,
-				username: event.target.value,
-			};
+	const [user, setUser] = useState({
+		username: '',
+	});
+
+	function usernameChangeHandler(e) {
+		setUser({
+			...user,
+			username: e.target.value,
 		});
-	};
+	}
+
+	function submitFormHandler(e) {
+		e.preventDefault();
+		console.log(user);
+	}
+
 	return (
 		<div>
-			{/* <form onSubmit={submitHandler}>
-				<label htmlFor="username"></label>
-				<input type="text" placeholder="Enter Username" name="username" />
-				<button type="submit">Sign Up</button>
-			</form> */}
-			<h1>{username}</h1>
-			<form onSubmit={submitHandler}>
+			<form onSubmit={submitFormHandler}>
 				<label>
-					Name:
-					<input type="text" name="username" />
+					Username:
+					<input value={user.username} onChange={usernameChangeHandler} />
 				</label>
 				<button type="submit">Submit</button>
 			</form>
