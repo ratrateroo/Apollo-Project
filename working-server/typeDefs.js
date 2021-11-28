@@ -14,6 +14,15 @@ const typeDefs = gql`
 		username: String!
 		profileimage: String!
 	}
+	type AuthData {
+		userId: ID!
+		token: String!
+		tokenExpiration: Int!
+	}
+
+	input UserInput {
+		username: String!
+	}
 
 	type File {
 		filename: String!
@@ -23,6 +32,7 @@ const typeDefs = gql`
 
 	type Mutation {
 		uploadFile(file: Upload!): File
+		createUser(userInput: UserInput): AuthData!
 	}
 `;
 

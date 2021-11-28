@@ -6,6 +6,7 @@ const resolvers = {
 	},
 	Mutation: {
 		uploadFile: (parent, { file }) => storeUpload(file),
+		createUser: async (args) => {},
 	},
 };
 
