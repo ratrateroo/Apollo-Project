@@ -14,7 +14,7 @@ const authLink = setContext((_, { headers }) => {
 	};
 });
 
-const link = createUploadLink({
+const httpLink = createUploadLink({
 	uri: 'http://localhost:4000/graphql',
 	// credentials: 'include',
 });
