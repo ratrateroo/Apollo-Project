@@ -53,6 +53,14 @@ const SignUp = () => {
 			})
 			.then((resData) => {
 				console.log(resData);
+				localStorage.setItem(
+					AUTH_TOKEN,
+					JSON.stringify({
+						token: resData.data.logInUser.token,
+						userId: resData.data.logInUser.userId,
+						tokenExpiration: resData.data.logInUser.tokenExpiration,
+					})
+				);
 				// if (resData.data.createUser.token) {
 				// 	auth.login(
 				// 		resData.data.createUser.token,
