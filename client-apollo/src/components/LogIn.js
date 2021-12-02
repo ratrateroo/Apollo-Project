@@ -16,7 +16,7 @@ const LogIn = () => {
 		console.log(user);
 		const requestBody = {
 			query: `
-		  mutation logInUser(
+		  query logInUser(
 			  $username: String!,
 			  
 			  ) {
@@ -52,6 +52,14 @@ const LogIn = () => {
 			})
 			.then((resData) => {
 				console.log(resData);
+				localStorage.setItem(
+					'LoggedInUser',
+					JSON.stringify({
+						token: resData.data.logInUser.token,
+						userId: resData.data.logInUser.userId,
+						tokenExpiration: resData.data.logInUser.tokenExpiration,
+					})
+				);
 				// if (resData.data.createUser.token) {
 				// 	auth.login(
 				// 		resData.data.createUser.token,

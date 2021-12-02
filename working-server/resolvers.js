@@ -16,9 +16,10 @@ const resolvers = {
 				if (!existingUser) {
 					throw new Error('User does not exist.');
 				}
+				console.log(existingUser.id);
 
 				const token = jwt.sign(
-					{ userId: result.id, username: user.username },
+					{ userId: existingUser.id, username: existingUser.username },
 					'secretkeyforhashing',
 					{
 						expiresIn: '1h',
@@ -26,7 +27,7 @@ const resolvers = {
 				);
 
 				return {
-					userId: result._id,
+					userId: existingUser.id,
 					token: token,
 					tokenExpiration: 1,
 				};
