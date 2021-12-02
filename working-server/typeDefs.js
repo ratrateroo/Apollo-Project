@@ -32,7 +32,8 @@ const typeDefs = gql`
 
 	type Mutation {
 		uploadFile(file: Upload!): File
-		createUser(userInput: UserInput): AuthData!
+		signUpUser(userInput: UserInput): AuthData!
+		logInUser(userInput: UserInput): AuthData!
 	}
 `;
 
