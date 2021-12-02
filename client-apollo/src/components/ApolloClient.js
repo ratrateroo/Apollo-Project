@@ -3,13 +3,14 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
 import { setContext } from '@apollo/client/link/context';
 
-import { AUTH_TOKEN } from '../constants';
+import { LOGGED_IN_USER } from '../constants';
 const authLink = setContext((_, { headers }) => {
-	const token = localStorage.getItem(AUTH_TOKEN);
+	const userData = localStorage.getItem(LOGGED_IN_USER);
+	const data = JSON.parse(userData);
 	return {
 		headers: {
 			...headers,
-			authorization: token ? `Bearer ${token}` : '',
+			authorization: token ? `Bearer ${data.token}` : '',
 		},
 	};
 });
