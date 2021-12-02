@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { AUTH_TOKEN } from '../constants';
 const LogIn = () => {
 	const [user, setUser] = useState({
 		username: '',
@@ -53,7 +54,7 @@ const LogIn = () => {
 			.then((resData) => {
 				console.log(resData);
 				localStorage.setItem(
-					'LoggedInUser',
+					AUTH_TOKEN,
 					JSON.stringify({
 						token: resData.data.logInUser.token,
 						userId: resData.data.logInUser.userId,

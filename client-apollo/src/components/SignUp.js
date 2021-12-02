@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { AUTH_TOKEN } from '../constants';
 const SignUp = () => {
 	const [user, setUser] = useState({
 		username: '',
