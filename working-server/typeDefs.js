@@ -7,6 +7,7 @@ const typeDefs = gql`
 
 	type Query {
 		files: [String]
+		logInUser(userInput: UserInput): AuthData!
 	}
 
 	type User {
@@ -33,7 +34,6 @@ const typeDefs = gql`
 	type Mutation {
 		uploadFile(file: Upload!): File
 		signUpUser(userInput: UserInput): AuthData!
-		logInUser(userInput: UserInput): AuthData!
 	}
 `;
 

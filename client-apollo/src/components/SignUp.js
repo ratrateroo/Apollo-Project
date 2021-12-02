@@ -11,16 +11,16 @@ const SignUp = () => {
 		});
 	}
 
-	function submitFormHandler(e) {
+	function signUpUserHandler(e) {
 		e.preventDefault();
 		console.log(user);
 		const requestBody = {
 			query: `
-		  mutation createUser(
+		  mutation signUpUser(
 			  $username: String!,
 			  
 			  ) {
-		    createUser(userInput: {
+		    signUpUser(userInput: {
 				username: $username,
 				
 				}) {
@@ -66,13 +66,13 @@ const SignUp = () => {
 	}
 
 	return (
-		<div>
-			<form onSubmit={submitFormHandler}>
+		<div style={{ border: '1px solid black', margin: '25px' }}>
+			<form onSubmit={signUpUserHandler}>
 				<label>
 					Username:
 					<input value={user.username} onChange={usernameChangeHandler} />
 				</label>
-				<button type="submit">Submit</button>
+				<button type="submit">Sign Up</button>
 			</form>
 		</div>
 	);
