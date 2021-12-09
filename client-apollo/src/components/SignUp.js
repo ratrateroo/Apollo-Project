@@ -136,26 +136,25 @@ const SignUp = () => {
 							<LockOutlinedIcon />
 						</Avatar>
 						<Typography component="h1" variant="h5">
-							Sign up
+							Sign Up
 						</Typography>
 						<Box
 							component="form"
 							noValidate
 							onSubmit={signUpUserHandler}
-							sx={{ mt: 3 }}>
-							<Grid container spacing={2}>
-								<Grid item xs={12} sm={12}>
-									<TextField
-										name="username"
-										required
-										fullWidth
-										id="username"
-										label="Username"
-										autoFocus
-										onChange={usernameChangeHandler}
-									/>
-								</Grid>
-							</Grid>
+							sx={{ mt: 1 }}>
+							<TextField
+								name="username"
+								required
+								fullWidth
+								id="username"
+								label="Username"
+								autoFocus
+								onChange={usernameChangeHandler}
+								value={user.username}
+								type="text"
+							/>
+
 							<Button
 								type="submit"
 								fullWidth
@@ -165,7 +164,7 @@ const SignUp = () => {
 							</Button>
 							<Grid container justifyContent="flex-end">
 								<Grid item>
-									<Link href="#" variant="body2">
+									<Link href="/login" variant="body2">
 										Already have an account? Log in.
 									</Link>
 								</Grid>

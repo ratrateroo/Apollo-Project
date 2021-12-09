@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Outlet } from 'react-router-dom';
 import Container from '@mui/material/Container';
 
 import Upload from './components/Upload';
@@ -20,11 +20,12 @@ const App = () => {
 					<Route path="signup" element={<SignUp />} />
 					<Route path="login" element={<LogIn />} />
 				</Routes>
+				<Outlet />
 			</Container>
 			{/* <Upload /> */}
 
-			<SignUp />
-			<LogIn />
+			{/* <SignUp />
+			<LogIn /> */}
 			<Files />
 			<InputUpload />
 		</React.Fragment>
