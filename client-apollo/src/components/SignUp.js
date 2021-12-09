@@ -11,12 +11,27 @@ import Checkbox from '@mui/material/Checkbox';
 // import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { lightGreen } from '@mui/material/colors';
+
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-const theme = createTheme();
+const theme = createTheme({
+	palette: {
+		primary: {
+			// Purple and green play nicely together.
+			main: lightGreen[900],
+		},
+		secondary: {
+			// This is green.A700 as hex.
+			main: '#11cb5f',
+		},
+	},
+});
 
 const SignUp = () => {
 	const [user, setUser] = useState({
@@ -129,6 +144,7 @@ const SignUp = () => {
 							sx={{ mt: 1 }}>
 							<TextField
 								name="username"
+								margin="normal"
 								required
 								fullWidth
 								id="username"
@@ -146,13 +162,13 @@ const SignUp = () => {
 								sx={{ mt: 3, mb: 2 }}>
 								Sign Up
 							</Button>
-							<Grid container justifyContent="flex-end">
+							{/* <Grid container justifyContent="flex-end">
 								<Grid item>
 									<RouterLink to="/login" variant="body2">
 										Already have an account? Log in.
 									</RouterLink>
 								</Grid>
-							</Grid>
+							</Grid> */}
 						</Box>
 					</Box>
 				</Container>

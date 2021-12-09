@@ -14,9 +14,22 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { lightGreen } from '@mui/material/colors';
+
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-const theme = createTheme();
+const theme = createTheme({
+	palette: {
+		primary: {
+			// Purple and green play nicely together.
+			main: lightGreen[900],
+		},
+		secondary: {
+			// This is green.A700 as hex.
+			main: '#11cb5f',
+		},
+	},
+});
 const LogIn = () => {
 	const [user, setUser] = useState({
 		username: '',
@@ -126,7 +139,7 @@ const LogIn = () => {
 							<LockOutlinedIcon />
 						</Avatar>
 						<Typography component="h1" variant="h5">
-							Sign in
+							Log In
 						</Typography>
 						<Box
 							component="form"
@@ -134,15 +147,15 @@ const LogIn = () => {
 							noValidate
 							sx={{ mt: 1 }}>
 							<TextField
+								name="username"
 								margin="normal"
 								required
 								fullWidth
 								id="username"
 								label="Username"
-								name="username"
+								autoFocus
 								onChange={usernameChangeHandler}
 								value={user.username}
-								autoFocus
 								type="text"
 							/>
 
@@ -157,13 +170,13 @@ const LogIn = () => {
 								sx={{ mt: 3, mb: 2 }}>
 								Login In
 							</Button>
-							<Grid container>
+							{/* <Grid container>
 								<Grid item>
 									<Link to="/signup" variant="body2">
 										{"Don't have an account? Sign Up"}
 									</Link>
 								</Grid>
-							</Grid>
+							</Grid> */}
 						</Box>
 					</Box>
 				</Container>
