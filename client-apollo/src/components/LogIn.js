@@ -61,6 +61,12 @@ const LogIn = () => {
 						tokenExpiration: resData.data.logInUser.tokenExpiration,
 					})
 				);
+
+				return {
+					token: resData.data.logInUser.token,
+					userId: resData.data.logInUser.userId,
+					tokenExpiration: resData.data.logInUser.tokenExpiration,
+				};
 				// if (resData.data.createUser.token) {
 				// 	auth.login(
 				// 		resData.data.createUser.token,

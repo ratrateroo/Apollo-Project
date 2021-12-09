@@ -6,11 +6,13 @@ import { setContext } from '@apollo/client/link/context';
 import { LOGGED_IN_USER } from '../constants';
 const authLink = setContext((_, { headers }) => {
 	const userData = localStorage.getItem(LOGGED_IN_USER);
+	console.log(userData);
 	const data = JSON.parse(userData);
+
 	return {
 		headers: {
 			...headers,
-			authorization: token ? `Bearer ${data.token}` : '',
+			authorization: data ? `Bearer ${data.token}` : '',
 		},
 	};
 });
