@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -30,12 +30,15 @@ const Navigation = () => {
 						<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
 							Sign Up
 						</Typography>
-						<Link to="/signup">
-							<Button color="inherit">Sign Up</Button>
-						</Link>
-						<Link to="/login">
-							<Button color="inherit">Log In</Button>
-						</Link>
+						<Button color="inherit">Click Me</Button>
+
+						<Button color="inherit" to="/signup" component={RouterLink}>
+							Sign Up
+						</Button>
+
+						<Button color="inherit" to="/login" component={RouterLink}>
+							Log In
+						</Button>
 					</Toolbar>
 				</AppBar>
 			</Box>
