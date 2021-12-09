@@ -1,20 +1,33 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Container from '@mui/material/Container';
 
 import Upload from './components/Upload';
 import { Files } from './components/Files';
 import InputUpload from './components/InputUpload';
+import Welcome from './components/Welcome';
 import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
+import Navigation from './components/Navigation';
 
 const App = () => {
 	return (
-		<div>
+		<React.Fragment>
+			<Navigation />
+			<Container>
+				<Routes>
+					<Route path="/" element={<Welcome />} />
+					<Route path="signup" element={<SignUp />} />
+					<Route path="login" element={<LogIn />} />
+				</Routes>
+			</Container>
 			{/* <Upload /> */}
+
 			<SignUp />
 			<LogIn />
 			<Files />
 			<InputUpload />
-		</div>
+		</React.Fragment>
 	);
 };
 
