@@ -9,7 +9,7 @@ const resolvers = {
 	Query: {
 		files: () => files,
 		logInUser: async (parent, { userInput }) => {
-			console.log(userInput.username);
+			console.log('User: ' + userInput.username + ' logged in.');
 			try {
 				const existingUser = await User.findOne({
 					username: userInput.username,
