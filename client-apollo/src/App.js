@@ -26,7 +26,7 @@ const App = () => {
 
 			{/* <SignUp />
 			<LogIn /> */}
-			<Files />
+			{/* <Files /> */}
 			<InputUpload />
 		</React.Fragment>
 	);

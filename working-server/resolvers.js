@@ -35,7 +35,7 @@ const resolvers = {
 				console.log(error);
 			}
 		},
-		users: async () => {
+		users: async (parent, args, context, info) => {
 			try {
 				const users = await User.find();
 				return users.map((user) => {
