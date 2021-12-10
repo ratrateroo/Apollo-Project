@@ -12,8 +12,7 @@ const apolloserver = new ApolloServer({
 	context: ({ req }) => {
 		return {
 			...req,
-			prisma,
-			pubsub,
+
 			userId: req && req.headers.authorization ? getUserId(req) : null,
 		};
 	},
