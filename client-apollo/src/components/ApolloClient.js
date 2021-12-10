@@ -3,11 +3,14 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
 import { setContext } from '@apollo/client/link/context';
 
+import { getUserData } from '../util/userData';
+
 import { LOGGED_IN_USER } from '../constants';
 const authLink = setContext((_, { headers }) => {
-	const userData = localStorage.getItem(LOGGED_IN_USER);
-
+	//const userData = localStorage.getItem(LOGGED_IN_USER);
+	const userData = getUserData();
 	const data = JSON.parse(userData);
+	console.log(userData);
 
 	return {
 		headers: {

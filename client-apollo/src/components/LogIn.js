@@ -17,6 +17,7 @@ import Container from '@mui/material/Container';
 import { lightGreen } from '@mui/material/colors';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { setUserData } from '../util/userData';
 
 const theme = createTheme({
 	palette: {
@@ -83,14 +84,20 @@ const LogIn = () => {
 			})
 			.then((resData) => {
 				console.log(resData);
-				localStorage.setItem(
-					LOGGED_IN_USER,
-					JSON.stringify({
-						token: resData.data.logInUser.token,
-						userId: resData.data.logInUser.userId,
-						tokenExpiration: resData.data.logInUser.tokenExpiration,
-					})
-				);
+				// localStorage.setItem(
+				// 	LOGGED_IN_USER,
+				// 	JSON.stringify({
+				// 		token: resData.data.logInUser.token,
+				// 		userId: resData.data.logInUser.userId,
+				// 		tokenExpiration: resData.data.logInUser.tokenExpiration,
+				// 	})
+				// );
+
+				setUserData({
+					token: resData.data.logInUser.token,
+					userId: resData.data.logInUser.userId,
+					tokenExpiration: resData.data.logInUser.tokenExpiration,
+				});
 
 				return {
 					token: resData.data.logInUser.token,

@@ -10,6 +10,8 @@ import Grid from '@mui/material/Grid';
 
 import UserCard from './UserCard';
 
+import { getUserData } from '../util/userData';
+
 const Item = styled(Paper)(({ theme }) => ({
 	...theme.typography.body2,
 	padding: theme.spacing(1),
@@ -30,6 +32,8 @@ export const USERS_QUERY = gql`
 const Welcome = () => {
 	const [loadedUsers, setLoadedUsers] = useState([]);
 	const { loading, error, data } = useQuery(USERS_QUERY);
+	const userData = getUserData();
+	console.log(userData);
 
 	useEffect(() => {
 		const fetchUsers = async () => {
