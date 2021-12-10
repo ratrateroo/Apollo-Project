@@ -29,13 +29,12 @@ export const USERS_QUERY = gql`
 
 const Welcome = () => {
 	const [loadedUsers, setLoadedUsers] = useState([]);
-	const { loading, error, data } = useQuery(USERS_QUERY, {});
+	const { loading, error, data } = useQuery(USERS_QUERY);
 
 	useEffect(() => {
 		const fetchUsers = async () => {
 			try {
-				const userData = data.json();
-				console.log(userData);
+				console.log(data);
 
 				//setLoadedUsers(resData.data.users);
 			} catch (err) {
@@ -56,20 +55,19 @@ const Welcome = () => {
 				</Typography>
 			</Box>
 			<Box sx={{ flexGrow: 1 }}>
-				<UserCard />
 				<Grid container spacing={2}>
-					<Grid item xs={6} md={8}>
-						<Item>xs=6 md=8</Item>
+					<Grid item>
+						<UserCard />
 					</Grid>
-					<Grid item xs={6} md={4}>
-						<Item>xs=6 md=4</Item>
+					<Grid item>
+						<UserCard />
 					</Grid>
-					<Grid item xs={6} md={4}>
-						<Item>xs=6 md=4</Item>
+					<Grid item>
+						<UserCard />
 					</Grid>
-					<Grid item xs={6} md={8}>
-						<Item>xs=6 md=8</Item>
-					</Grid>
+					{/* <Grid item xs={6} md={8}>
+						<UserCard />
+					</Grid> */}
 				</Grid>
 			</Box>
 		</React.Fragment>

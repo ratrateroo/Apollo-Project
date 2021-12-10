@@ -1,8 +1,8 @@
+require('dotenv').config();
 const jwt = require('jsonwebtoken');
-const APP_SECRET = 'GraphQL-is-aw3some';
 
 function getTokenPayload(token) {
-	return jwt.verify(token, APP_SECRET);
+	return jwt.verify(token, process.env.TOKEN_SECRET_KEY);
 }
 
 function getUserId(req, authToken) {
@@ -18,6 +18,7 @@ function getUserId(req, authToken) {
 		}
 	} else if (authToken) {
 		const { userId } = getTokenPayload(authToken);
+		console.log(userId);
 		return userId;
 	}
 
@@ -25,6 +26,5 @@ function getUserId(req, authToken) {
 }
 
 module.exports = {
-	APP_SECRET,
 	getUserId,
 };

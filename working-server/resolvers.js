@@ -1,3 +1,4 @@
+require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const storeUpload = require('./storeUpload');
 const files = require('./files');
@@ -20,7 +21,7 @@ const resolvers = {
 
 				const token = jwt.sign(
 					{ userId: existingUser.id, username: existingUser.username },
-					'secretkeyforhashing',
+					process.env.TOKEN_SECRET_KEY,
 					{
 						expiresIn: '1h',
 					}

@@ -6,7 +6,7 @@ import { setContext } from '@apollo/client/link/context';
 import { LOGGED_IN_USER } from '../constants';
 const authLink = setContext((_, { headers }) => {
 	const userData = localStorage.getItem(LOGGED_IN_USER);
-	console.log(userData);
+
 	const data = JSON.parse(userData);
 
 	return {
@@ -18,7 +18,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const httpLink = createUploadLink({
-	uri: 'http://localhost:4000/graphql',
+	uri: `http://localhost:8000`,
 	// credentials: 'include',
 });
 

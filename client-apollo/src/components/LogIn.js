@@ -67,7 +67,7 @@ const LogIn = () => {
 			},
 		};
 
-		fetch('http://localhost:4000/graphql', {
+		fetch(`http://localhost:8000/graphql`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
