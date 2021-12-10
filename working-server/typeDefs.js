@@ -8,6 +8,7 @@ const typeDefs = gql`
 	type Query {
 		files: [String]
 		logInUser(userInput: UserInput): AuthData!
+		users: [User!]!
 	}
 
 	type User {

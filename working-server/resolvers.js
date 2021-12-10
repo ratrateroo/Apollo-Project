@@ -35,6 +35,16 @@ const resolvers = {
 				console.log(error);
 			}
 		},
+		users: async () => {
+			try {
+				const users = await User.find();
+				return users.map((user) => {
+					return { ...user._doc, _id: user._doc._id.toString() };
+				});
+			} catch (err) {
+				throw err;
+			}
+		},
 	},
 	Mutation: {
 		uploadFile: (parent, { file }) => storeUpload(file),
