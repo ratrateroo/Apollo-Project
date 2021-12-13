@@ -31,7 +31,7 @@ const theme = createTheme({
 		},
 	},
 });
-const LogIn = () => {
+const LogIn = (props) => {
 	const [user, setUser] = useState({
 		username: '',
 	});
@@ -98,6 +98,11 @@ const LogIn = () => {
 					userId: resData.data.logInUser.userId,
 					tokenExpiration: resData.data.logInUser.tokenExpiration,
 				});
+				// props.onLogin(
+				// 	resData.data.logInUser.token,
+				// 	resData.data.logInUser.userId,
+				// 	resData.data.logInUser.tokenExpiration
+				// );
 
 				return {
 					token: resData.data.logInUser.token,

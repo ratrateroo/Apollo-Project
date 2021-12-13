@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route, Outlet } from 'react-router-dom';
 import Container from '@mui/material/Container';
 
@@ -10,8 +10,26 @@ import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
 import Navigation from './components/Navigation';
 import UserProfile from './components/UserProfile';
+import UserList from './components/UserList';
+
+import { setUserData, getUserData } from './util/userData';
 
 const App = () => {
+	// const [userInfo, setUserInfo] = useState();
+
+	// const setUserDataHandler = (token, userId, tokenExpiration) => {
+	// 	setUserData({
+	// 		token: token,
+	// 		userId: userId,
+	// 		tokenExpiration: tokenExpiration,
+	// 	});
+	// 	setUserInfo({
+	// 		token: token,
+	// 		userId: userId,
+	// 		tokenExpiration: tokenExpiration,
+	// 	});
+	// };
+
 	return (
 		<React.Fragment>
 			<Navigation />
@@ -19,6 +37,7 @@ const App = () => {
 				<Routes>
 					<Route path="/" element={<Welcome />} />
 					<Route path="profile" element={<UserProfile />} />
+					<Route path="users" element={<UserList />} />
 					<Route path="signup" element={<SignUp />} />
 					<Route path="login" element={<LogIn />} />
 				</Routes>

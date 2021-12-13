@@ -38,10 +38,13 @@ const resolvers = {
 		},
 		users: async (parent, args, context, info) => {
 			try {
-				const users = await User.find();
-				return users.map((user) => {
-					return { ...user._doc, _id: user._doc._id.toString() };
-				});
+				if (context.userId) {
+					const users = await User.find();
+					return users.map((user) => {
+						return { ...user._doc, _id: user._doc._id.toString() };
+					});
+				}
+				throw new Error('Unauthenticated.');
 			} catch (err) {
 				throw err;
 			}

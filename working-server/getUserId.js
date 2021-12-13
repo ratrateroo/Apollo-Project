@@ -14,11 +14,12 @@ function getUserId(req, authToken) {
 				throw new Error('No token found');
 			}
 			const { userId } = getTokenPayload(token);
+			console.log('Login Request.');
 			return userId;
 		}
 	} else if (authToken) {
 		const { userId } = getTokenPayload(authToken);
-		console.log(userId);
+		console.log('Authenticated Request.');
 		return userId;
 	}
 

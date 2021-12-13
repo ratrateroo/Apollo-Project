@@ -28,36 +28,42 @@ const UserProfile = () => {
 	return (
 		<React.Fragment>
 			<ThemeProvider theme={theme}>
-				<Box
+				<Container
+					component="main"
+					maxWidth="xl"
 					sx={{
-						display: 'flex',
-						flexWrap: 'wrap',
-
-						background: 'lightgray',
+						background: 'gray',
 					}}>
-					<Container component="main">
-						<CssBaseline />
-						<Box
-							sx={{
-								marginTop: 8,
-								padding: 3,
-								display: 'flex',
-								flexDirection: 'column',
-								alignItems: 'center',
-							}}>
-							<Paper elevation="3" sx={{ padding: '10px' }}>
-								<Avatar
-									alt="Remy Sharp"
-									src="https://i.pravatar.cc/250"
-									sx={{ width: 250, height: 250 }}
-								/>
+					<CssBaseline />
+					<Box
+						sx={{
+							marginTop: 3,
+							padding: 3,
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
+						}}>
+						<Paper elevation="3" sx={{ padding: '10px' }}>
+							<Avatar
+								alt="Remy Sharp"
+								src="https://i.pravatar.cc/250"
+								sx={{ width: 250, height: 250 }}
+							/>
+							<Box
+								sx={{
+									marginTop: 3,
+									padding: 3,
+									display: 'flex',
+									flexDirection: 'column',
+									alignItems: 'center',
+								}}>
 								<Typography component="h1" variant="h5">
 									Username
 								</Typography>
-							</Paper>
-						</Box>
-					</Container>
-				</Box>
+							</Box>
+						</Paper>
+					</Box>
+				</Container>
 			</ThemeProvider>
 		</React.Fragment>
 	);

@@ -61,7 +61,9 @@ const Navigation = () => {
 								component={RouterLink}>
 								Profile
 							</Button>
-
+							<Button color="inherit" to="/users" component={RouterLink}>
+								Users
+							</Button>
 							<Button
 								color="inherit"
 								to="/signup"

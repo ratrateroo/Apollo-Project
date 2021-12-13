@@ -29,7 +29,7 @@ export const USERS_QUERY = gql`
 	}
 `;
 
-const Welcome = () => {
+const UserList = () => {
 	const [loadedUsers, setLoadedUsers] = useState([]);
 	const { loading, error, data } = useQuery(USERS_QUERY);
 	const userData = getUserData();
@@ -40,7 +40,7 @@ const Welcome = () => {
 			try {
 				console.log(data);
 
-				//setLoadedUsers(resData.data.users);
+				//setLoadedUsers(data.users);
 			} catch (err) {
 				console.log(err);
 			}
@@ -50,15 +50,28 @@ const Welcome = () => {
 
 	return (
 		<React.Fragment>
-			<Box sx={{ width: '100%', maxWidth: 'lg' }}>
-				<Typography variant="h2" component="div" gutterBottom>
-					Welcome...
-				</Typography>
-				<Typography variant="h4" gutterBottom component="div">
-					It is nice to be home.
-				</Typography>
+			<Box sx={{ flexGrow: 1 }}>
+				<Grid container spacing={2}>
+					{/* {loadedUsers.map(user,index) => {
+                        <Grid item>
+						<UserCard username={user.}/>
+					</Grid>
+                    }} */}
+					<Grid item>
+						<UserCard />
+					</Grid>
+					<Grid item>
+						<UserCard />
+					</Grid>
+					<Grid item>
+						<UserCard />
+					</Grid>
+					{/* <Grid item xs={6} md={8}>
+						<UserCard />
+					</Grid> */}
+				</Grid>
 			</Box>
 		</React.Fragment>
 	);
 };
-export default Welcome;
+export default UserList;
