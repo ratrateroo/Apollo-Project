@@ -9,6 +9,7 @@ import Welcome from './components/Welcome';
 import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
 import Navigation from './components/Navigation';
+import UserProfile from './components/UserProfile';
 
 const App = () => {
 	return (
@@ -17,6 +18,7 @@ const App = () => {
 			<Container>
 				<Routes>
 					<Route path="/" element={<Welcome />} />
+					<Route path="profile" element={<UserProfile />} />
 					<Route path="signup" element={<SignUp />} />
 					<Route path="login" element={<LogIn />} />
 				</Routes>
