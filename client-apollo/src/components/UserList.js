@@ -32,21 +32,23 @@ export const USERS_QUERY = gql`
 const UserList = () => {
 	const [loadedUsers, setLoadedUsers] = useState([]);
 	const { loading, error, data } = useQuery(USERS_QUERY);
+
+	console.log(data);
 	const userData = getUserData();
 	console.log(userData);
 
 	useEffect(() => {
-		const fetchUsers = async () => {
-			try {
-				console.log(data);
+		try {
+			console.log(JSON.parse(data));
 
-				//setLoadedUsers(data.users);
-			} catch (err) {
-				console.log(err);
-			}
-		};
-		fetchUsers();
-	}, []);
+			//setLoadedUsers(data.users);
+		} catch (err) {
+			console.log(err);
+		}
+	}, [loading, error, data]);
+
+	if (loading) return <div>Loading...</div>;
+	if (error) return <div>Error</div>;
 
 	return (
 		<React.Fragment>

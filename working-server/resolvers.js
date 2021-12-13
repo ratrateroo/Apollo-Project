@@ -39,9 +39,15 @@ const resolvers = {
 		users: async (parent, args, context, info) => {
 			try {
 				if (context.userId) {
+					console.log('resolver');
 					const users = await User.find();
 					return users.map((user) => {
-						return { ...user._doc, _id: user._doc._id.toString() };
+						return {
+							...user._doc,
+							_id: user._doc._id.toString(),
+							username: user._doc.username,
+							profileimage: user._doc.profileimage,
+						};
 					});
 				}
 				throw new Error('Unauthenticated.');
