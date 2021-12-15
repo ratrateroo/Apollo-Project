@@ -33,6 +33,7 @@ const startServer = async () => {
 		app.use(cors());
 		app.use((req, res, next) => {
 			console.log('Request Received.');
+			console.log(req);
 			next();
 		});
 		app.use(graphqlUploadExpress());
