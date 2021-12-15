@@ -11,6 +11,7 @@ import LogIn from './components/LogIn';
 import Navigation from './components/Navigation';
 import UserProfile from './components/UserProfile';
 import UserList from './components/UserList';
+import Users from './components/Users';
 
 import { setUserData, getUserData } from './util/userData';
 

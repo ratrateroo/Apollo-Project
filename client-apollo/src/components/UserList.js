@@ -37,18 +37,52 @@ const UserList = () => {
 	console.log(userData);
 
 	useEffect(() => {
-		try {
-			console.log(data);
+		const fetchUsers = async () => {
+			try {
+				const requestBody = {
+					query: `
+        query {
+			users{
+				_id
+			username
+			profileimage
+    			
+			}
+    
+          }
+        
+      `,
+				};
 
-			//setLoadedUsers(data.users);
-		} catch (err) {
-			console.log(err);
-		}
-	}, [loading, error, data]);
+				fetch('http://localhost:8000/graphql', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: 'Bearer ' + userData.token,
+					},
+					body: JSON.stringify(requestBody),
+				})
+					.then((res) => {
+						if (res.status !== 200 && res.status !== 201) {
+							throw new Error('Failed!');
+						}
 
-	if (loading) return <div>Loading...</div>;
-	if (error) return <div>Error</div>;
-
+						return res.json();
+					})
+					.then((resData) => {
+						console.log(resData.data);
+						console.log(resData.data.users);
+						setLoadedUsers(resData.data.users);
+					})
+					.catch((err) => {
+						console.log(err);
+					});
+			} catch (err) {
+				console.log(err);
+			}
+		};
+		fetchUsers();
+	}, []);
 	return (
 		<React.Fragment>
 			<Box sx={{ flexGrow: 1 }}>

@@ -20,7 +20,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export const USERS_QUERY = gql`
-	query AllUsersQuery {
+	{
 		users {
 			_id
 			username
@@ -29,12 +29,16 @@ export const USERS_QUERY = gql`
 	}
 `;
 
-const UserList = () => {
+const Users = () => {
 	const [loadedUsers, setLoadedUsers] = useState([]);
 	const { loading, error, data } = useQuery(USERS_QUERY);
 
 	const userData = getUserData();
 	console.log(userData);
+
+	const loadUsersHandler = () => {
+		console.log(data);
+	};
 
 	useEffect(() => {
 		try {
@@ -46,11 +50,14 @@ const UserList = () => {
 		}
 	}, [loading, error, data]);
 
-	if (loading) return <div>Loading...</div>;
-	if (error) return <div>Error</div>;
-
+	// if (loading) return <div>Loading...</div>;
+	// if (error) {
+	// 	console.log(error);
+	// 	return <div>Error</div>;
+	// }
 	return (
 		<React.Fragment>
+			<button onClick={loadUsersHandler}>Load Users</button>
 			<Box sx={{ flexGrow: 1 }}>
 				<Grid container spacing={2}>
 					{/* {loadedUsers.map(user,index) => {
@@ -75,4 +82,4 @@ const UserList = () => {
 		</React.Fragment>
 	);
 };
-export default UserList;
+export default Users;
