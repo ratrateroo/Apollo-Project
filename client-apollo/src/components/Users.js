@@ -30,14 +30,22 @@ export const USERS_QUERY = gql`
 `;
 
 const Users = () => {
-	const [loadedUsers, setLoadedUsers] = useState([]);
-	const { loading, error, data } = useQuery(USERS_QUERY);
-
 	const userData = getUserData();
+
 	console.log(userData);
+	console.log(`Bearer ${userData.token}`);
+	const [loadedUsers, setLoadedUsers] = useState([]);
+	const { loading, error, data } = useQuery(USERS_QUERY, {
+		// fetchPolicy: 'standby',
+		// context: {
+		// 	headers: {
+		// 		authorization: `Bearer${' '}${userData.token}`,
+		// 	},
+		// },
+	});
 
 	const loadUsersHandler = () => {
-		console.log(data);
+		console.log(`Bearer ${userData.token}`);
 	};
 
 	useEffect(() => {

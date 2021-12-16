@@ -1,4 +1,9 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import {
+	ApolloClient,
+	InMemoryCache,
+	ApolloLink,
+	HttpLink,
+} from '@apollo/client';
 
 import { createUploadLink } from 'apollo-upload-client';
 import { setContext } from '@apollo/client/link/context';
@@ -9,25 +14,32 @@ import { LOGGED_IN_USER } from '../constants';
 const authLink = setContext((_, { headers }) => {
 	//const userData = localStorage.getItem(LOGGED_IN_USER);
 	const userData = getUserData();
-	const data = JSON.parse(userData);
-	console.log(userData);
+	console.log('Client');
+	console.log(`Bearer ${userData.token}`);
 
 	return {
 		headers: {
 			...headers,
-			authorization: data ? `Bearer ${data.token}` : '',
+			authorization: userData ? `Bearer ${userData.token}` : '',
 		},
 	};
 });
 
-const httpLink = createUploadLink({
+const uploadLink = createUploadLink({
 	uri: `http://localhost:8000/graphql`,
 	// credentials: 'include',
 });
 
+const httpLink = new HttpLink({ uri: `http://localhost:8000/graphql` });
+
 //new client
+// export const client = new ApolloClient({
+// 	link: authLink.concat(httpLink),
+// 	cache: new InMemoryCache(),
+// });
+
 export const client = new ApolloClient({
-	link: authLink.concat(httpLink),
+	link: ApolloLink.from([authLink, uploadLink, httpLink]),
 	cache: new InMemoryCache(),
 });
 

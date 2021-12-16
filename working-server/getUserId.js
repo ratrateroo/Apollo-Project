@@ -11,10 +11,12 @@ function getUserId(req, authToken) {
 		if (authHeader) {
 			const token = authHeader.replace('Bearer ', '');
 			if (!token) {
+				console.log('No token found');
 				throw new Error('No token found');
 			}
 			const { userId } = getTokenPayload(token);
 			console.log('Login Request.');
+			console.log(userId);
 			return userId;
 		}
 	} else if (authToken) {
