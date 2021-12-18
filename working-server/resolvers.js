@@ -93,6 +93,34 @@ const resolvers = {
 				console.log(error);
 			}
 		},
+		logInUser: async (parent, { userInput }) => {
+			console.log('User: ' + userInput.username + ' logged in.');
+			try {
+				const existingUser = await User.findOne({
+					username: userInput.username,
+				});
+				if (!existingUser) {
+					throw new Error('User does not exist.');
+				}
+				console.log(existingUser.id);
+
+				const token = jwt.sign(
+					{ userId: existingUser.id, username: existingUser.username },
+					process.env.TOKEN_SECRET_KEY,
+					{
+						expiresIn: '1h',
+					}
+				);
+
+				return {
+					userId: existingUser.id,
+					token: token,
+					tokenExpiration: 1,
+				};
+			} catch (error) {
+				console.log(error);
+			}
+		},
 	},
 };
 
