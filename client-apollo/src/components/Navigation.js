@@ -80,6 +80,12 @@ const Navigation = () => {
 							<Button color="inherit" to="/login" component={RouterLink}>
 								Log In
 							</Button>
+							<Button
+								color="inherit"
+								to="/loginuser"
+								component={RouterLink}>
+								Log In User
+							</Button>
 						</Toolbar>
 					</AppBar>
 				</Box>

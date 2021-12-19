@@ -34,7 +34,7 @@ const theme = createTheme({
 });
 
 export const LOGIN_MUTATION = gql`
-	query LogInMutation($username: String!) {
+	mutation LogInMutation($username: String!) {
 		logInUser(userInput: { username: $username }) {
 			userId
 			token
@@ -43,7 +43,7 @@ export const LOGIN_MUTATION = gql`
 	}
 `;
 
-const LogIn = (props) => {
+const LogInUser = (props) => {
 	const [logInUser, { error }] = useMutation(LOGIN_MUTATION);
 
 	const [user, setUser] = useState({
@@ -223,4 +223,4 @@ const LogIn = (props) => {
 	);
 };
 
-export default LogIn;
+export default LogInUser;
