@@ -83,15 +83,7 @@ const Users = () => {
 							/>
 						</Grid>
 					))}
-					<Grid item>
-						<UserCard />
-					</Grid>
-					<Grid item>
-						<UserCard />
-					</Grid>
-					<Grid item>
-						<UserCard />
-					</Grid>
+
 					{/* <Grid item xs={6} md={8}>
 						<UserCard />
 					</Grid> */}

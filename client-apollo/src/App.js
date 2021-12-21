@@ -38,7 +38,7 @@ const App = () => {
 			<Container>
 				<Routes>
 					<Route path="/" element={<Welcome />} />
-					<Route path="profile" element={<UserProfile />} />
+					<Route path="profile/:uid" element={<UserProfile />} />
 					<Route path="userlist" element={<UserList />} />
 					<Route path="users" element={<Users />} />
 					<Route path="signup" element={<SignUp />} />

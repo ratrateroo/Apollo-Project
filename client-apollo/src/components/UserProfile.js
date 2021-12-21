@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Avatar from '@mui/material/Avatar';
@@ -11,6 +11,7 @@ import { lightGreen } from '@mui/material/colors';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { setUserData } from '../util/userData';
+import { useParams } from 'react-router-dom';
 
 const theme = createTheme({
 	palette: {
@@ -25,6 +26,11 @@ const theme = createTheme({
 	},
 });
 const UserProfile = () => {
+	const params = useParams();
+	const { uid } = params;
+	useEffect(() => {
+		console.log(uid);
+	});
 	return (
 		<React.Fragment>
 			<ThemeProvider theme={theme}>
