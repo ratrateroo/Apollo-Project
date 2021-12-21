@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
-export default function UserCard() {
+export default function UserCard({ username, id, profileimage }) {
 	return (
 		<Card sx={{ maxWidth: 300 }}>
 			<CardActionArea>
@@ -13,11 +13,11 @@ export default function UserCard() {
 					component="img"
 					height="250"
 					image="https://picsum.photos/300/250"
-					alt="user-random-image"
+					alt={(id + username + profileimage).toString()}
 				/>
 				<CardContent>
 					<Typography gutterBottom variant="h5" component="div">
-						Username
+						{username}
 					</Typography>
 				</CardContent>
 			</CardActionArea>

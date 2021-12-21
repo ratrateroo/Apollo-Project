@@ -50,6 +50,7 @@ const Users = () => {
 
 	useEffect(() => {
 		try {
+			setLoadedUsers(data.users);
 			console.log(data);
 
 			//setLoadedUsers(data.users);
@@ -65,14 +66,23 @@ const Users = () => {
 	// }
 	return (
 		<React.Fragment>
-			<button onClick={loadUsersHandler}>Load Users</button>
-			<Box sx={{ flexGrow: 1 }}>
+			<Box sx={{ flexGrow: 1, mt: 2 }}>
 				<Grid container spacing={2}>
 					{/* {loadedUsers.map(user,index) => {
                         <Grid item>
 						<UserCard username={user.}/>
 					</Grid>
                     }} */}
+					{loadedUsers.map((user) => (
+						<Grid item>
+							<UserCard
+								key={user._id}
+								username={user.username}
+								profileimage={user.profileimage}
+								id={user._id}
+							/>
+						</Grid>
+					))}
 					<Grid item>
 						<UserCard />
 					</Grid>
