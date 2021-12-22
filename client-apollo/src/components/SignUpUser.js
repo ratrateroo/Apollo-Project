@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import { LOGGED_IN_USER } from '../constants';
+
+import { gql, useMutation } from '@apollo/client';
 
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-// import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
+
 import Box from '@mui/material/Box';
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -34,7 +31,18 @@ const theme = createTheme({
 	},
 });
 
+export const SIGNUP_MUTATION = gql`
+	mutation SignUpMutation($username: String!) {
+		signUpUser(userInput: { username: $username }) {
+			userId
+			token
+			tokenExpiration
+		}
+	}
+`;
+
 const SignUpUser = () => {
+	const [signUpUser, { error }] = useMutation(SIGNUP_MUTATION);
 	const [user, setUser] = useState({
 		username: '',
 	});
@@ -48,71 +56,27 @@ const SignUpUser = () => {
 
 	function signUpUserHandler(e) {
 		e.preventDefault();
-		console.log(user);
-		const requestBody = {
-			query: `
-		  mutation signUpUser(
-			  $username: String!,
-			  
-			  ) {
-		    signUpUser(userInput: {
-				username: $username,
-				
-				}) {
-		      userId
-			  token
-			  tokenExpiration
-		      
-		    }
-		  }
-		`,
-			variables: {
-				username: user.username,
-			},
-		};
 
-		fetch(`http://localhost:8000/graphql`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(requestBody),
-		})
-			.then((res) => {
-				console.log(res);
-				if (res.status !== 200 && res.status !== 201) {
-					throw new Error('Failed!');
-				}
-				return res.json();
-			})
-			.then((resData) => {
-				console.log(resData);
-
-				// localStorage.setItem(
-				// 	LOGGED_IN_USER,
-				// 	JSON.stringify({
-				// 		token: resData.data.logInUser.token,
-				// 		userId: resData.data.logInUser.userId,
-				// 		tokenExpiration: resData.data.logInUser.tokenExpiration,
-				// 	})
-				// );
-				setUserData({
-					token: resData.data.logInUser.token,
-					userId: resData.data.logInUser.userId,
-					tokenExpiration: resData.data.logInUser.tokenExpiration,
-				});
-
-				// if (resData.data.createUser.token) {
-				// 	auth.login(
-				// 		resData.data.createUser.token,
-				// 		resData.data.createUser.userId,
-				// 		resData.data.createUser.tokenExpiration
-				// 	);
-				// }
-			})
-			.catch((err) => {
+		try {
+			signUpUser({
+				variables: {
+					username: user.username,
+				},
+				onCompleted: ({ signUpUser }) => {
+					setUserData({
+						token: signUpUser.token,
+						userId: signUpUser.userId,
+						tokenExpiration: signUpUser.tokenExpiration,
+					});
+				},
+			}).catch((err) => {
 				console.log(err);
 			});
+		} catch (error) {
+			console.log(error);
+		}
+
+		console.log(user);
 	}
 
 	return (

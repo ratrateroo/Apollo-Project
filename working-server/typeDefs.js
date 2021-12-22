@@ -17,9 +17,9 @@ const typeDefs = gql`
 		profileimage: String!
 	}
 	type AuthData {
-		userId: ID!
-		token: String!
-		tokenExpiration: Int!
+		userId: ID
+		token: String
+		tokenExpiration: Int
 	}
 
 	input UserInput {

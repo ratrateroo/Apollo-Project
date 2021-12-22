@@ -47,20 +47,6 @@ const resolvers = {
 						profileimage: user._doc.profileimage,
 					};
 				});
-
-				// if (context.userId) {
-				// 	console.log('resolver');
-				// 	const users = await User.find();
-				// 	return users.map((user) => {
-				// 		return {
-				// 			...user._doc,
-				// 			_id: user._doc._id.toString(),
-				// 			username: user._doc.username,
-				// 			profileimage: user._doc.profileimage,
-				// 		};
-				// 	});
-				// }
-				throw new Error('Unauthenticated.');
 			} catch (err) {
 				throw err;
 			}
@@ -75,7 +61,8 @@ const resolvers = {
 					username: userInput.username,
 				});
 				if (existingUser) {
-					throw new Error('User exists already.');
+					//throw new Error('User exists already.');
+					return { message: 'User exists already.' };
 				}
 
 				const user = new User({
