@@ -74,9 +74,8 @@ const Users = () => {
 					</Grid>
                     }} */}
 					{loadedUsers.map((user) => (
-						<Grid item>
+						<Grid item key={user._id}>
 							<UserCard
-								key={user._id}
 								username={user.username}
 								profileimage={user.profileimage}
 								id={user._id}

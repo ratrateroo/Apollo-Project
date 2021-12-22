@@ -34,7 +34,7 @@ const theme = createTheme({
 	},
 });
 
-const SignUp = () => {
+const SignUpUser = () => {
 	const [user, setUser] = useState({
 		username: '',
 	});
@@ -185,4 +185,4 @@ const SignUp = () => {
 	);
 };
 
-export default SignUp;
+export default SignUpUser;
