@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom';
 
 export default function UserCard({ username, id, profileimage }) {
 	return (
-		<NavLink to={`/profile/${id}`}>
+		<Button to={`/profile/${id}`} component={NavLink}>
 			<Card sx={{ maxWidth: 300 }}>
 				<CardActionArea>
 					<CardMedia
@@ -24,6 +24,6 @@ export default function UserCard({ username, id, profileimage }) {
 					</CardContent>
 				</CardActionArea>
 			</Card>
-		</NavLink>
+		</Button>
 	);
 }
