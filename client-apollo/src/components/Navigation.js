@@ -76,6 +76,12 @@ const Navigation = () => {
 								component={RouterLink}>
 								Sign Up
 							</Button>
+							<Button
+								color="inherit"
+								to="/signupuser"
+								component={RouterLink}>
+								Sign Up User
+							</Button>
 
 							<Button color="inherit" to="/login" component={RouterLink}>
 								Log In

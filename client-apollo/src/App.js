@@ -7,6 +7,7 @@ import { Files } from './components/Files';
 import InputUpload from './components/InputUpload';
 import Welcome from './components/Welcome';
 import SignUp from './components/SignUp';
+import SignUpUser from './components/SignUpUser';
 import LogIn from './components/LogIn';
 import LogInUser from './components/LogInUser';
 import Navigation from './components/Navigation';
@@ -42,6 +43,7 @@ const App = () => {
 					<Route path="userlist" element={<UserList />} />
 					<Route path="users" element={<Users />} />
 					<Route path="signup" element={<SignUp />} />
+					<Route path="signupuser" element={<SignUpUser />} />
 					<Route path="login" element={<LogIn />} />
 					<Route path="loginuser" element={<LogInUser />} />
 				</Routes>
