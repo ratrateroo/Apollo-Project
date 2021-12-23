@@ -12,6 +12,7 @@ export const FILES_QUERY = gql`
 
 const Files = () => {
 	const { data, loading } = useQuery(FILES_QUERY);
+	console.log(data);
 
 	if (loading) {
 		return <div>Loading...</div>;

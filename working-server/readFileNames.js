@@ -1,11 +1,34 @@
 const fs = require('fs');
-
+const EventEmitter = require('events').EventEmitter;
+const filesEE = new EventEmitter();
+const myfiles = [];
 const folderName = './public/images';
 
-module.exports = () => {
-	fs.readdir(folderName, (err, files) => {
-		files.forEach((file) => {
-			console.log(file);
+// this event will be called when all files have been added to myfiles
+filesEE.on('files_ready', function () {
+	console.dir(myfiles);
+});
+
+const readFileNames = () => {
+	// read all files from current directory
+	fs.readdir(folderName, function (err, files) {
+		if (err) throw err;
+		files.forEach(function (file) {
+			myfiles.push(file);
 		});
+		filesEE.emit('files_ready'); // trigger files_ready event
 	});
+	return myfiles;
+	// let listItems = [];
+	// fs.readdir(folderName, (err, items) => {
+	// 	const list = [];
+	// 	items.forEach((file) => {
+	// 		list.push(file);
+	// 	});
+
+	// 	listItems = list;
+	// });
+	// console.log(listItems);
+	// return listItems;
 };
+module.exports = readFileNames;

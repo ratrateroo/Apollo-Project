@@ -4,10 +4,14 @@ const storeUpload = require('./storeUpload');
 const files = require('./files');
 
 const User = require('./models/user');
+const readFileNames = require('./readFileNames');
+
+const fs = require('fs');
+const folderName = './public/images';
 
 const resolvers = {
 	Query: {
-		files: () => files,
+		files: readFileNames,
 		logInUser: async (parent, { userInput }) => {
 			console.log('User: ' + userInput.username + ' logged in.');
 			try {
