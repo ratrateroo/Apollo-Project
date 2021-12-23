@@ -4,14 +4,14 @@ import { useQuery } from '@apollo/client';
 //old import gql from 'graphql-tag'
 import { gql } from '@apollo/client';
 
-export const filesQuery = gql`
-	{
+export const FILES_QUERY = gql`
+	query FilesQuery {
 		files
 	}
 `;
 
-export const Files = () => {
-	const { data, loading } = useQuery(filesQuery);
+const Files = () => {
+	const { data, loading } = useQuery(FILES_QUERY);
 
 	if (loading) {
 		return <div>Loading...</div>;
@@ -24,7 +24,7 @@ export const Files = () => {
 					<img
 						style={{ width: 200 }}
 						key={x}
-						src={`http://localhost:4000/freefiles/images/${x}`}
+						src={`http://localhost:8000/freefiles/images/${x}`}
 						alt={x}
 					/>
 				);
@@ -32,3 +32,5 @@ export const Files = () => {
 		</div>
 	);
 };
+
+export default Files;

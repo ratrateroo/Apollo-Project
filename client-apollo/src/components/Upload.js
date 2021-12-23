@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { gql, useMutation } from '@apollo/client';
 
-import { filesQuery } from './Files';
+import { FILES_QUERY } from './Files';
 
 const uploadFileMutation = gql`
 	mutation UploadFile($file: Upload!) {
@@ -16,7 +16,7 @@ const uploadFileMutation = gql`
 
 const Upload = () => {
 	const [uploadFile] = useMutation(uploadFileMutation, {
-		refetchQueries: [{ query: filesQuery }],
+		refetchQueries: [{ query: FILES_QUERY }],
 	});
 	const onDrop = useCallback(
 		([file]) => {

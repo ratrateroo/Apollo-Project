@@ -3,7 +3,7 @@ import { Routes, Route, Outlet } from 'react-router-dom';
 import Container from '@mui/material/Container';
 
 import Upload from './components/Upload';
-import { Files } from './components/Files';
+import Files from './components/Files';
 import InputUpload from './components/InputUpload';
 import Welcome from './components/Welcome';
 import SignUp from './components/SignUp';
@@ -39,6 +39,7 @@ const App = () => {
 			<Container>
 				<Routes>
 					<Route path="/" element={<Welcome />} />
+					<Route path="files" element={<Files />} />
 					<Route path="profile/:uid" element={<UserProfile />} />
 					<Route path="userlist" element={<UserList />} />
 					<Route path="users" element={<Users />} />
