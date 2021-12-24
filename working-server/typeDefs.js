@@ -9,7 +9,7 @@ const typeDefs = gql`
 		files: [String]
 		logInUser(userInput: UserInput): AuthData!
 		users: [User!]!
-		user: User
+		user(id: ID!): User
 	}
 
 	type User {

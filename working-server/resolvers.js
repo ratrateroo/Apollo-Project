@@ -12,9 +12,10 @@ const folderName = './public/images';
 const resolvers = {
 	Query: {
 		files: readFileNames,
-		user: async (_, data) => {
+		user: async (_, { id }) => {
 			try {
-				const user = await User.findById(data.id);
+				console.log(id);
+				const user = await User.findById(id);
 				//console.log(user._doc);
 
 				return {

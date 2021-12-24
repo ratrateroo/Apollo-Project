@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { gql, useQuery } from '@apollo/client';
 
 import Box from '@mui/material/Box';
@@ -30,8 +30,8 @@ const theme = createTheme({
 });
 
 const USER_QUERY = gql`
-	{
-		users {
+	query UserQuery($id: ID!) {
+		user(id: $id) {
 			_id
 			username
 			profileimage
@@ -43,15 +43,16 @@ const UserProfile = (props) => {
 	const userData = getUserData();
 	const params = useParams();
 	const { uid } = params;
-	const [loadedUser, setLoadedUser] = useState({});
+	//const [loadedUser, setLoadedUser] = useState({});
 	const { loading, error, data } = useQuery(USER_QUERY, {
 		variables: {
-			id: userData.userId,
+			id: uid,
 		},
 	});
-	useEffect(() => {
-		console.log(uid);
-	});
+
+	// useEffect(() => {
+	// 	setLoadedUser(data);
+	// }, [loading, error, data]);
 	return (
 		<React.Fragment>
 			<ThemeProvider theme={theme}>
@@ -63,37 +64,42 @@ const UserProfile = (props) => {
 						mt: 5,
 					}}>
 					<CssBaseline />
-					<Box
-						sx={{
-							marginTop: 3,
-							padding: 3,
-							display: 'flex',
-							flexDirection: 'column',
-							alignItems: 'center',
-						}}>
-						<Paper elevation={3} sx={{ padding: '30px' }}>
-							<Avatar
-								alt="Remy Sharp"
-								src="https://i.pravatar.cc/250"
-								sx={{ width: 250, height: 250 }}
-							/>
-							<Box
-								sx={{
-									marginTop: 3,
-									padding: 3,
-									display: 'flex',
-									flexDirection: 'column',
-									alignItems: 'center',
-								}}>
-								<Typography component="h1" variant="h5">
-									Username
-								</Typography>
-								{userData.userId === uid && (
-									<Button>Update Profile</Button>
-								)}
-							</Box>
-						</Paper>
-					</Box>
+					{loading ? (
+						<h3>Loading</h3>
+					) : (
+						<Box
+							sx={{
+								marginTop: 3,
+								padding: 3,
+								display: 'flex',
+								flexDirection: 'column',
+								alignItems: 'center',
+							}}>
+							<Paper elevation={3} sx={{ padding: '30px' }}>
+								<Avatar
+									alt="Remy Sharp"
+									src="https://i.pravatar.cc/250"
+									sx={{ width: 250, height: 250 }}
+								/>
+								<Box
+									sx={{
+										marginTop: 3,
+										padding: 3,
+										display: 'flex',
+										flexDirection: 'column',
+										alignItems: 'center',
+									}}>
+									<Typography component="h1" variant="h5">
+										{data.user.username}
+									</Typography>
+
+									{userData.userId === uid && (
+										<Button>Update Profile</Button>
+									)}
+								</Box>
+							</Paper>
+						</Box>
+					)}
 				</Container>
 			</ThemeProvider>
 		</React.Fragment>
