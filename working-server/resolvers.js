@@ -12,6 +12,21 @@ const folderName = './public/images';
 const resolvers = {
 	Query: {
 		files: readFileNames,
+		user: async (_, data) => {
+			try {
+				const user = await User.findById(data.id);
+				//console.log(user._doc);
+
+				return {
+					...user._doc,
+					_id: user._doc._id.toString(),
+					username: user.username,
+					profileimage: user.profileimage,
+				};
+			} catch (err) {
+				throw err;
+			}
+		},
 		logInUser: async (parent, { userInput }) => {
 			console.log('User: ' + userInput.username + ' logged in.');
 			try {

@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { gql, useQuery } from '@apollo/client';
+
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Avatar from '@mui/material/Avatar';
@@ -26,12 +28,27 @@ const theme = createTheme({
 		},
 	},
 });
+
+const USER_QUERY = gql`
+	{
+		users {
+			_id
+			username
+			profileimage
+		}
+	}
+`;
+
 const UserProfile = (props) => {
 	const userData = getUserData();
-	console.log(userData);
-	console.log(props);
 	const params = useParams();
 	const { uid } = params;
+	const [loadedUser, setLoadedUser] = useState({});
+	const { loading, error, data } = useQuery(USER_QUERY, {
+		variables: {
+			id: userData.userId,
+		},
+	});
 	useEffect(() => {
 		console.log(uid);
 	});
