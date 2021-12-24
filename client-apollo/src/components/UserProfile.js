@@ -12,6 +12,7 @@ import { lightGreen } from '@mui/material/colors';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { setUserData } from '../util/userData';
 import { useParams } from 'react-router-dom';
+import { getUserData } from '../util/userData';
 
 const theme = createTheme({
 	palette: {
@@ -25,7 +26,10 @@ const theme = createTheme({
 		},
 	},
 });
-const UserProfile = () => {
+const UserProfile = (props) => {
+	const userData = getUserData();
+	console.log(userData);
+	console.log(props);
 	const params = useParams();
 	const { uid } = params;
 	useEffect(() => {
@@ -36,9 +40,10 @@ const UserProfile = () => {
 			<ThemeProvider theme={theme}>
 				<Container
 					component="main"
-					maxWidth="xl"
 					sx={{
 						background: 'gray',
+						padding: '25px',
+						mt: 5,
 					}}>
 					<CssBaseline />
 					<Box
@@ -49,7 +54,7 @@ const UserProfile = () => {
 							flexDirection: 'column',
 							alignItems: 'center',
 						}}>
-						<Paper elevation="3" sx={{ padding: '10px' }}>
+						<Paper elevation={3} sx={{ padding: '30px' }}>
 							<Avatar
 								alt="Remy Sharp"
 								src="https://i.pravatar.cc/250"
@@ -66,6 +71,9 @@ const UserProfile = () => {
 								<Typography component="h1" variant="h5">
 									Username
 								</Typography>
+								{userData.userId === uid && (
+									<Button>Update Profile</Button>
+								)}
 							</Box>
 						</Paper>
 					</Box>
