@@ -17,6 +17,8 @@ import { lightGreen } from '@mui/material/colors';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import { getUserData } from '../util/userData';
+
 const theme = createTheme({
 	palette: {
 		primary: {
@@ -31,6 +33,7 @@ const theme = createTheme({
 });
 
 const Navigation = () => {
+	const userData = getUserData();
 	return (
 		<React.Fragment>
 			<ThemeProvider theme={theme}>
@@ -58,12 +61,14 @@ const Navigation = () => {
 								Files
 							</Button>
 
-							<Button
-								color="inherit"
-								to="/profile"
-								component={RouterLink}>
-								Profile
-							</Button>
+							{getUserData.token && (
+								<Button
+									color="inherit"
+									to="/profile"
+									component={RouterLink}>
+									Profile
+								</Button>
+							)}
 							<Button color="inherit" to="/users" component={RouterLink}>
 								Users
 							</Button>
