@@ -16,6 +16,7 @@ import UserList from './components/UserList';
 import Users from './components/Users';
 
 import { setUserData, getUserData } from './util/userData';
+import RequireAuth from './auth/RequireAuth';
 
 const App = () => {
 	// const [userInfo, setUserInfo] = useState();
@@ -40,7 +41,15 @@ const App = () => {
 				<Routes>
 					<Route path="/" element={<Welcome />} />
 					<Route path="files" element={<Files />} />
-					<Route path="profile/:uid" element={<UserProfile />} />
+
+					<Route
+						path="profile/:uid"
+						element={
+							<RequireAuth>
+								<UserProfile />
+							</RequireAuth>
+						}
+					/>
 					<Route path="userlist" element={<UserList />} />
 					<Route path="users" element={<Users />} />
 					<Route path="signup" element={<SignUp />} />

@@ -69,6 +69,7 @@ const Navigation = () => {
 									Profile
 								</Button>
 							)}
+
 							<Button color="inherit" to="/users" component={RouterLink}>
 								Users
 							</Button>
