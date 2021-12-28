@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { gql, useQuery } from '@apollo/client';
+//import { gql, useQuery } from '@apollo/client';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -19,34 +19,34 @@ const Item = styled(Paper)(({ theme }) => ({
 	color: theme.palette.text.secondary,
 }));
 
-export const USERS_QUERY = gql`
-	query AllUsersQuery {
-		users {
-			_id
-			username
-			profileimage
-		}
-	}
-`;
+// export const USERS_QUERY = gql`
+// 	query AllUsersQuery {
+// 		users {
+// 			_id
+// 			username
+// 			profileimage
+// 		}
+// 	}
+// `;
 
 const Welcome = () => {
 	const [loadedUsers, setLoadedUsers] = useState([]);
-	const { loading, error, data } = useQuery(USERS_QUERY);
+	//const { loading, error, data } = useQuery(USERS_QUERY);
 	const userData = getUserData();
 	console.log(userData);
 
-	useEffect(() => {
-		const fetchUsers = async () => {
-			try {
-				console.log(data);
+	// useEffect(() => {
+	// 	const fetchUsers = async () => {
+	// 		try {
+	// 			console.log(data);
 
-				//setLoadedUsers(resData.data.users);
-			} catch (err) {
-				console.log(err);
-			}
-		};
-		fetchUsers();
-	}, []);
+	// 			//setLoadedUsers(resData.data.users);
+	// 		} catch (err) {
+	// 			console.log(err);
+	// 		}
+	// 	};
+	// 	fetchUsers();
+	// }, []);
 
 	return (
 		<React.Fragment>
