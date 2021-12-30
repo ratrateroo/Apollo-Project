@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Routes, Route, Outlet } from 'react-router-dom';
 import Container from '@mui/material/Container';
 
-import Upload from './components/Upload';
+// import Upload from './components/Upload';
 import Files from './components/Files';
 import InputUpload from './components/InputUpload';
 import Welcome from './components/Welcome';
@@ -15,7 +15,6 @@ import UserProfile from './components/UserProfile';
 import UserList from './components/UserList';
 import Users from './components/Users';
 
-import { setUserData, getUserData } from './util/userData';
 import RequireAuth from './auth/RequireAuth';
 
 const App = () => {

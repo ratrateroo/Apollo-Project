@@ -10,7 +10,6 @@ import { setContext } from '@apollo/client/link/context';
 
 import { getUserData } from '../util/userData';
 
-import { LOGGED_IN_USER } from '../constants';
 const authLink = setContext((_, { headers }) => {
 	//const userData = localStorage.getItem(LOGGED_IN_USER);
 	const userData = getUserData();
