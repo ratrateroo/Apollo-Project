@@ -1,23 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
-import { gql, useQuery } from '@apollo/client';
+import { gql } from '@apollo/client';
 
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
+
 import Grid from '@mui/material/Grid';
 
 import UserCard from './UserCard';
 
 import { getUserData } from '../util/userData';
-
-const Item = styled(Paper)(({ theme }) => ({
-	...theme.typography.body2,
-	padding: theme.spacing(1),
-	textAlign: 'center',
-	color: theme.palette.text.secondary,
-}));
 
 export const USERS_QUERY = gql`
 	query AllUsersQuery {
@@ -31,7 +22,6 @@ export const USERS_QUERY = gql`
 
 const UserList = () => {
 	const [loadedUsers, setLoadedUsers] = useState([]);
-	const { loading, error, data } = useQuery(USERS_QUERY);
 
 	const userData = getUserData();
 	console.log(userData);
