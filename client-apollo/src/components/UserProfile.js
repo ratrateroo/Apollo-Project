@@ -40,6 +40,7 @@ const USER_QUERY = gql`
 `;
 
 const UserProfile = (props) => {
+	const [isUpdating, setIsUpdating] = useState();
 	const userData = getUserData();
 	const params = useParams();
 	const { uid } = params;
