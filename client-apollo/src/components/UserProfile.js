@@ -54,6 +54,11 @@ const UserProfile = (props) => {
 	// useEffect(() => {
 	// 	setLoadedUser(data);
 	// }, [loading, error, data]);
+
+	const startProfileUpdateHandler = (event) => {
+		event.preventDefault();
+		setIsUpdating(true);
+	};
 	return (
 		<React.Fragment>
 			<ThemeProvider theme={theme}>
@@ -95,7 +100,9 @@ const UserProfile = (props) => {
 									</Typography>
 
 									{userData.userId === uid && (
-										<Button>Update Profile</Button>
+										<Button onClick={startProfileUpdateHandler}>
+											Update Profile
+										</Button>
 									)}
 								</Box>
 							</Paper>
