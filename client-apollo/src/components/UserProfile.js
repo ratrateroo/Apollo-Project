@@ -11,10 +11,24 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { lightGreen } from '@mui/material/colors';
 
+import Modal from '@mui/material/Modal';
+
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { setUserData } from '../util/userData';
 import { useParams } from 'react-router-dom';
 import { getUserData } from '../util/userData';
+
+const style = {
+	position: 'absolute',
+	top: '50%',
+	left: '50%',
+	transform: 'translate(-50%, -50%)',
+	width: 400,
+	bgcolor: 'background.paper',
+	border: '2px solid #000',
+	boxShadow: 24,
+	p: 4,
+};
 
 const theme = createTheme({
 	palette: {
@@ -40,7 +54,7 @@ const USER_QUERY = gql`
 `;
 
 const UserProfile = (props) => {
-	const [isUpdating, setIsUpdating] = useState();
+	const [isUpdating, setIsUpdating] = useState(false);
 	const userData = getUserData();
 	const params = useParams();
 	const { uid } = params;
@@ -58,6 +72,10 @@ const UserProfile = (props) => {
 	const startProfileUpdateHandler = (event) => {
 		event.preventDefault();
 		setIsUpdating(true);
+	};
+	const stopProfileUpdateHandler = (event) => {
+		event.preventDefault();
+		setIsUpdating(false);
 	};
 	return (
 		<React.Fragment>
@@ -106,6 +124,25 @@ const UserProfile = (props) => {
 									)}
 								</Box>
 							</Paper>
+							<Modal
+								open={isUpdating}
+								onClose={stopProfileUpdateHandler}
+								aria-labelledby="modal-modal-title"
+								aria-describedby="modal-modal-description">
+								<Box sx={style}>
+									<Typography
+										id="modal-modal-title"
+										variant="h6"
+										component="h2">
+										Change Profile Image
+									</Typography>
+									<Typography
+										id="modal-modal-description"
+										sx={{ mt: 2 }}>
+										Changing Profile Image This Modal
+									</Typography>
+								</Box>
+							</Modal>
 						</Box>
 					)}
 				</Container>
