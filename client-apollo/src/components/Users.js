@@ -57,7 +57,7 @@ const Users = () => {
 		} catch (err) {
 			console.log(err);
 		}
-	}, [loading, error, data]);
+	}, [data]);
 
 	// if (loading) return <div>Loading...</div>;
 	// if (error) {
