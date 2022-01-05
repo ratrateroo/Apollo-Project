@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { gql, useQuery } from '@apollo/client';
+import { gql, useQuery, useLazyQuery } from '@apollo/client';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -35,21 +35,16 @@ const Users = () => {
 	console.log(userData);
 	console.log(`Bearer ${userData.token}`);
 	const [loadedUsers, setLoadedUsers] = useState([]);
-	const { loading, error, data } = useQuery(USERS_QUERY, {
-		// fetchPolicy: 'standby',
-		// context: {
-		// 	headers: {
-		// 		authorization: `Bearer${' '}${userData.token}`,
-		// 	},
-		// },
-	});
+	//const { loading, error, data } = useQuery(USERS_QUERY);
+	const [getUsers, { loading, error, data }] = useLazyQuery(USERS_QUERY);
 
 	const loadUsersHandler = () => {
 		console.log(`Bearer ${userData.token}`);
 	};
 
-	useEffect(() => {
+	useEffect(async () => {
 		try {
+			await getUsers();
 			setLoadedUsers(data.users);
 			console.log(data);
 
@@ -57,7 +52,7 @@ const Users = () => {
 		} catch (err) {
 			console.log(err);
 		}
-	}, [data]);
+	}, [loading]);
 
 	// if (loading) return <div>Loading...</div>;
 	// if (error) {
