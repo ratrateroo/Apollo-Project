@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
+import Input from '@mui/material/Input';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import Typography from '@mui/material/Typography';
@@ -141,6 +142,23 @@ const UserProfile = (props) => {
 										sx={{ mt: 2 }}>
 										Changing Profile Image This Modal
 									</Typography>
+									<Avatar
+										alt="Remy Sharp"
+										src="https://i.pravatar.cc/250"
+										sx={{ width: 250, height: 250 }}
+									/>
+									<Input
+										type="file"
+										accept="image/*"
+										style={{ display: 'none' }}
+										multiple
+										id="raised-button-file"
+									/>
+									<label htmlFor="raised-button-file">
+										<Button variant="raised" component="span">
+											Upload
+										</Button>
+									</label>
 								</Box>
 							</Modal>
 						</Box>

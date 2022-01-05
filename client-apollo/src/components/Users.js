@@ -52,7 +52,7 @@ const Users = () => {
 		} catch (err) {
 			console.log(err);
 		}
-	}, [loading]);
+	}, [data]);
 
 	// if (loading) return <div>Loading...</div>;
 	// if (error) {
