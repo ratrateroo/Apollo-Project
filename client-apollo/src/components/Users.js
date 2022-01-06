@@ -42,9 +42,9 @@ const Users = () => {
 		console.log(`Bearer ${userData.token}`);
 	};
 
-	useEffect(async () => {
+	useEffect(() => {
 		try {
-			await getUsers();
+			getUsers();
 			setLoadedUsers(data.users);
 			console.log(data);
 

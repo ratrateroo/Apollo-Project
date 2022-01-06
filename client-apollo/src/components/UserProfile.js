@@ -90,6 +90,18 @@ const UserProfile = (props) => {
 		event.preventDefault();
 		setIsUpdating(false);
 	};
+
+	const onUploadHandler = ({
+		target: {
+			validity,
+			files: [file],
+		},
+	}) => {
+		validity.valid &&
+			uploadFileMutation({ variables: { file: file } }).then(() => {
+				apolloClient.resetStore();
+			});
+	};
 	return (
 		<React.Fragment>
 			<ThemeProvider theme={theme}>
@@ -161,6 +173,7 @@ const UserProfile = (props) => {
 										style={{ display: 'none' }}
 										multiple
 										id="raised-button-file"
+										onChange={onUploadHandler}
 									/>
 									<label htmlFor="raised-button-file">
 										<Button variant="raised" component="span">
