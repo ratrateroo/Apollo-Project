@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { gql, useQuery } from '@apollo/client';
+import { gql, useQuery, useMutation, useApolloClient } from '@apollo/client';
 
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -54,6 +54,16 @@ const USER_QUERY = gql`
 	}
 `;
 
+const SINGLE_UPLOAD_MUTATION = gql`
+	mutation uploadFile($file: Upload!) {
+		uploadFile(file: $file) {
+			filename
+			mimetype
+			encoding
+		}
+	}
+`;
+
 const UserProfile = (props) => {
 	const [isUpdating, setIsUpdating] = useState(false);
 	const userData = getUserData();
@@ -65,6 +75,8 @@ const UserProfile = (props) => {
 			id: uid,
 		},
 	});
+	const [uploadFileMutation] = useMutation(SINGLE_UPLOAD_MUTATION);
+	const apolloClient = useApolloClient();
 
 	// useEffect(() => {
 	// 	setLoadedUser(data);
@@ -137,11 +149,7 @@ const UserProfile = (props) => {
 										component="h2">
 										Change Profile Image
 									</Typography>
-									<Typography
-										id="modal-modal-description"
-										sx={{ mt: 2 }}>
-										Changing Profile Image This Modal
-									</Typography>
+
 									<Avatar
 										alt="Remy Sharp"
 										src="https://i.pravatar.cc/250"
