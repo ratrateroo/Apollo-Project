@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { LOGGED_IN_USER } from '../constants';
 
 import Avatar from '@mui/material/Avatar';
@@ -32,6 +32,9 @@ const theme = createTheme({
 	},
 });
 const LogIn = (props) => {
+	let navigate = useNavigate();
+	let location = useLocation();
+	let from = location.state?.from?.pathname || '/';
 	const [user, setUser] = useState({
 		username: '',
 	});
@@ -98,6 +101,7 @@ const LogIn = (props) => {
 					userId: resData.data.logInUser.userId,
 					tokenExpiration: resData.data.logInUser.tokenExpiration,
 				});
+				navigate(from, { replace: true });
 				// props.onLogin(
 				// 	resData.data.logInUser.token,
 				// 	resData.data.logInUser.userId,
