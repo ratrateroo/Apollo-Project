@@ -2,7 +2,6 @@ import React from 'react';
 import { Routes, Route, Outlet } from 'react-router-dom';
 import Container from '@mui/material/Container';
 
-// import Upload from './components/Upload';
 import Files from './components/Files';
 import InputUpload from './components/InputUpload';
 import Welcome from './components/Welcome';
@@ -18,21 +17,6 @@ import Users from './components/Users';
 import RequireAuth from './auth/RequireAuth';
 
 const App = () => {
-	// const [userInfo, setUserInfo] = useState();
-
-	// const setUserDataHandler = (token, userId, tokenExpiration) => {
-	// 	setUserData({
-	// 		token: token,
-	// 		userId: userId,
-	// 		tokenExpiration: tokenExpiration,
-	// 	});
-	// 	setUserInfo({
-	// 		token: token,
-	// 		userId: userId,
-	// 		tokenExpiration: tokenExpiration,
-	// 	});
-	// };
-
 	return (
 		<React.Fragment>
 			<Navigation />
