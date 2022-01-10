@@ -3,7 +3,7 @@ import { Routes, Route, Outlet } from 'react-router-dom';
 import Container from '@mui/material/Container';
 
 import Files from './components/Files';
-import InputUpload from './components/InputUpload';
+
 import Welcome from './components/Welcome';
 import SignUp from './components/SignUp';
 import SignUpUser from './components/SignUpUser';
@@ -47,7 +47,6 @@ const App = () => {
 			{/* <SignUp />
 			<LogIn /> */}
 			{/* <Files /> */}
-			<InputUpload />
 		</React.Fragment>
 	);
 };
