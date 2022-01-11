@@ -51,9 +51,7 @@ const Navigation = () => {
 							<Typography
 								variant="h6"
 								component="div"
-								sx={{ flexGrow: 1 }}>
-								Merry Christmas...
-							</Typography>
+								sx={{ flexGrow: 1 }}></Typography>
 							<Button color="inherit" to="/" component={RouterLink}>
 								Home
 							</Button>
