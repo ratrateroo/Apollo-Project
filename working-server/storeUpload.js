@@ -1,7 +1,8 @@
 const { UserInputError } = require('apollo-server-express');
 const User = require('./models/user');
 const storeFileSystem = require('./storeFileSystem');
-const storeUpload = async (file) => {
+const storeUpload = async (file, context) => {
+	console.log(context);
 	const { createReadStream, filename, mimetype, encoding } = await file.file;
 	console.log(createReadStream);
 	console.log(filename);

@@ -73,7 +73,7 @@ const resolvers = {
 		},
 	},
 	Mutation: {
-		uploadFile: (parent, { file }) => storeUpload(file),
+		uploadFile: (parent, { file }, context) => storeUpload(file, context),
 		signUpUser: async (parent, { userInput }) => {
 			console.log(userInput.username);
 			try {
