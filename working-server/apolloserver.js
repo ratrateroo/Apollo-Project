@@ -10,10 +10,12 @@ const apolloserver = new ApolloServer({
 	typeDefs,
 	resolvers,
 	context: ({ req }) => {
+		console.log(req.headers);
 		return {
 			...req,
 
 			userId: req && req.headers.authorization ? getUserId(req) : null,
+			message: 'hello',
 		};
 	},
 });
