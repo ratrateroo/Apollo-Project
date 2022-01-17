@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { gql, useQuery, useMutation, useApolloClient } from '@apollo/client';
 
 import Box from '@mui/material/Box';
@@ -15,7 +15,7 @@ import { lightGreen } from '@mui/material/colors';
 import Modal from '@mui/material/Modal';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { setUserData } from '../util/userData';
+
 import { useParams } from 'react-router-dom';
 import { getUserData } from '../util/userData';
 
@@ -70,7 +70,7 @@ const UserProfile = (props) => {
 	const params = useParams();
 	const { uid } = params;
 	//const [loadedUser, setLoadedUser] = useState({});
-	const { loading, error, data } = useQuery(USER_QUERY, {
+	const { loading, data } = useQuery(USER_QUERY, {
 		variables: {
 			id: uid,
 		},
