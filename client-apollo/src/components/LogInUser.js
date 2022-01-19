@@ -40,7 +40,7 @@ export const LOGIN_MUTATION = gql`
 `;
 
 const LogInUser = (props) => {
-	const [logInUser, { error }] = useMutation(LOGIN_MUTATION);
+	const [logInUser] = useMutation(LOGIN_MUTATION);
 
 	const [user, setUser] = useState({
 		username: '',
