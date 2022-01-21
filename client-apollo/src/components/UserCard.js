@@ -6,20 +6,24 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 
-export default function UserCard({ username, id, profileimage }) {
+export default function UserCard(props) {
 	return (
-		<Button to={`/profile/${id}`} component={NavLink}>
+		<Button to={`/profile/${props.id}`} component={NavLink}>
 			<Card sx={{ maxWidth: 300 }}>
 				<CardActionArea>
 					<CardMedia
 						component="img"
 						height="250"
 						image="https://picsum.photos/300/250"
-						alt={(id + username + profileimage).toString()}
+						alt={(
+							props.id +
+							props.username +
+							props.profileimage
+						).toString()}
 					/>
 					<CardContent>
 						<Typography gutterBottom variant="h5" component="div">
-							{username}
+							{props.username}
 						</Typography>
 					</CardContent>
 				</CardActionArea>

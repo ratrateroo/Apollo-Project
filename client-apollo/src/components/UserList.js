@@ -21,12 +21,14 @@ export const USERS_QUERY = gql`
 `;
 
 const UserList = () => {
-	const [loadedUsers, setLoadedUsers] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
+	const [loadedUsers, setLoadedUsers] = useState();
+	const [showUsers, setShowUsers] = useState(false);
 
 	const userData = getUserData();
 	console.log(userData);
 
-	useEffect(() => {
+	useEffect(async () => {
 		const fetchUsers = async () => {
 			try {
 				const requestBody = {
@@ -44,11 +46,11 @@ const UserList = () => {
       `,
 				};
 
-				fetch('http://localhost:8000/graphql', {
+				await fetch('http://localhost:8000/graphql', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
-						//Authorization: 'Bearer ' + userData.token,
+						Authorization: 'Bearer ' + userData.token,
 					},
 					body: JSON.stringify(requestBody),
 				})
@@ -61,7 +63,6 @@ const UserList = () => {
 					})
 					.then((resData) => {
 						console.log(resData.data);
-						console.log(resData.data.users);
 						setLoadedUsers(resData.data.users);
 					})
 					.catch((err) => {
@@ -71,29 +72,41 @@ const UserList = () => {
 				console.log(err);
 			}
 		};
-		fetchUsers();
+		await fetchUsers();
+		setIsLoading(false);
 	}, []);
+
+	const loadHandler = () => {
+		setShowUsers(true);
+		console.log(loadedUsers);
+		loadedUsers.map((user) => {
+			console.log(user);
+			return user.username;
+		});
+	};
 	return (
 		<React.Fragment>
+			<button onClick={loadHandler}>load</button>
+			<h1>User:{showUsers ? 'True' : 'False'}</h1>
 			<Box sx={{ flexGrow: 1 }}>
 				<Grid container spacing={2}>
-					{loadedUsers.map((user, index) => {
-						<Grid item>
-							<UserCard username={user.username} />
-						</Grid>;
-					})}
-					<Grid item>
-						<UserCard />
-					</Grid>
-					<Grid item>
-						<UserCard />
-					</Grid>
-					<Grid item>
-						<UserCard />
-					</Grid>
-					{/* <Grid item xs={6} md={8}>
-						<UserCard />
-					</Grid> */}
+					{!isLoading ? (
+						loadedUsers.map((user) => {
+							return (
+								<Grid item key={user._id}>
+									<UserCard
+										username={user.username}
+										profileimage={user.profileimage}
+										id={user._id}
+									/>
+									{console.log(user.username)}
+									<h1>{user.username}</h1>
+								</Grid>
+							);
+						})
+					) : (
+						<h1>Loading</h1>
+					)}
 				</Grid>
 			</Box>
 		</React.Fragment>
