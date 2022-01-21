@@ -77,11 +77,11 @@ const UserList = () => {
 		<React.Fragment>
 			<Box sx={{ flexGrow: 1 }}>
 				<Grid container spacing={2}>
-					{/* {loadedUsers.map(user,index) => {
-                        <Grid item>
-						<UserCard username={user.}/>
-					</Grid>
-                    }} */}
+					{loadedUsers.map((user, index) => {
+						<Grid item>
+							<UserCard username={user.username} />
+						</Grid>;
+					})}
 					<Grid item>
 						<UserCard />
 					</Grid>
