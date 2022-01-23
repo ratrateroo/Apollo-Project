@@ -1,23 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
-import { gql, useQuery, useLazyQuery } from '@apollo/client';
+import { gql, useLazyQuery } from '@apollo/client';
 
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
+
 import Grid from '@mui/material/Grid';
 
 import UserCard from './UserCard';
 
 import { getUserData } from '../util/userData';
-
-const Item = styled(Paper)(({ theme }) => ({
-	...theme.typography.body2,
-	padding: theme.spacing(1),
-	textAlign: 'center',
-	color: theme.palette.text.secondary,
-}));
 
 export const USERS_QUERY = gql`
 	{
@@ -36,11 +27,7 @@ const Users = () => {
 	console.log(`Bearer ${userData.token}`);
 	const [loadedUsers, setLoadedUsers] = useState([]);
 	//const { loading, error, data } = useQuery(USERS_QUERY);
-	const [getUsers, { loading, error, data }] = useLazyQuery(USERS_QUERY);
-
-	const loadUsersHandler = () => {
-		console.log(`Bearer ${userData.token}`);
-	};
+	const [getUsers, { data }] = useLazyQuery(USERS_QUERY);
 
 	useEffect(() => {
 		try {
@@ -52,7 +39,7 @@ const Users = () => {
 		} catch (err) {
 			console.log(err);
 		}
-	}, [data]);
+	}, [getUsers, data]);
 
 	// if (loading) return <div>Loading...</div>;
 	// if (error) {
