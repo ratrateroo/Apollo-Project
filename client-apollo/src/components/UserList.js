@@ -28,7 +28,7 @@ const UserList = () => {
 	const userData = getUserData();
 	console.log(userData);
 
-	useEffect(async () => {
+	useEffect(() => {
 		const fetchUsers = async () => {
 			try {
 				const requestBody = {
@@ -72,7 +72,7 @@ const UserList = () => {
 				console.log(err);
 			}
 		};
-		await fetchUsers();
+		fetchUsers();
 		setIsLoading(false);
 	}, []);
 
