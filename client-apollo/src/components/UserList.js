@@ -74,7 +74,7 @@ const UserList = () => {
 		};
 		fetchUsers();
 		setIsLoading(false);
-	}, []);
+	}, [userData.token]);
 
 	const loadHandler = () => {
 		setShowUsers(true);
