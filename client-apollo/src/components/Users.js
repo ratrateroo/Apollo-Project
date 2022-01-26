@@ -26,7 +26,7 @@ const Users = () => {
 	console.log(userData);
 	console.log(`Bearer ${userData.token}`);
 	const [loadedUsers, setLoadedUsers] = useState([]);
-	//const { loading, error, data } = useQuery(USERS_QUERY);
+
 	const [getUsers, { data }] = useLazyQuery(USERS_QUERY);
 
 	useEffect(() => {
@@ -34,18 +34,11 @@ const Users = () => {
 			getUsers();
 			setLoadedUsers(data.users);
 			console.log(data);
-
-			//setLoadedUsers(data.users);
 		} catch (err) {
 			console.log(err);
 		}
 	}, [getUsers, data]);
 
-	// if (loading) return <div>Loading...</div>;
-	// if (error) {
-	// 	console.log(error);
-	// 	return <div>Error</div>;
-	// }
 	return (
 		<React.Fragment>
 			<Box sx={{ flexGrow: 1, mt: 2 }}>

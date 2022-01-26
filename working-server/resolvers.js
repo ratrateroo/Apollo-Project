@@ -59,9 +59,9 @@ const resolvers = {
 		users: async (parent, args, context, info) => {
 			try {
 				const users = await User.find();
-				console.log('Users List');
-				console.log(users);
-				console.log(context.userId);
+				// console.log('Users List');
+				// console.log(users);
+				// console.log(context.userId);
 				return users.map((user) => {
 					return {
 						...user._doc,
@@ -71,6 +71,7 @@ const resolvers = {
 					};
 				});
 			} catch (err) {
+				console.log('Error in try.');
 				throw err;
 			}
 		},
