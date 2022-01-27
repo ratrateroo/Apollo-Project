@@ -10,7 +10,7 @@ const apolloserver = new ApolloServer({
 	typeDefs,
 	resolvers,
 	context: ({ req }) => {
-		console.log(req.headers);
+		console.log('checking headers');
 		return {
 			...req,
 

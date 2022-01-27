@@ -9,15 +9,18 @@ filesEE.on('files_ready', function () {
 	console.dir(myfiles);
 });
 
+console.log('length to zero');
 const readFileNames = () => {
 	// read all files from current directory
 	fs.readdir(folderName, function (err, files) {
+		myfiles.length = 0;
 		if (err) throw err;
 		files.forEach(function (file) {
 			myfiles.push(file);
 		});
 		filesEE.emit('files_ready'); // trigger files_ready event
 	});
+	console.log('returning files');
 	return myfiles;
 	// let listItems = [];
 	// fs.readdir(folderName, (err, items) => {
