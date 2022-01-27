@@ -11,7 +11,7 @@ export const FILES_QUERY = gql`
 `;
 
 const Files = () => {
-	const { data, loading } = useQuery(FILES_QUERY);
+	const { data, loading, error } = useQuery(FILES_QUERY);
 	console.log(data);
 
 	if (loading) {
@@ -20,16 +20,20 @@ const Files = () => {
 
 	return (
 		<div>
-			{data.files.map((x) => {
-				return (
-					<img
-						style={{ width: 200 }}
-						key={x}
-						src={`http://localhost:8000/freefiles/images/${x}`}
-						alt={x}
-					/>
-				);
-			})}
+			{error ? (
+				<div>Can't find files.</div>
+			) : (
+				data.files.map((x) => {
+					return (
+						<img
+							style={{ width: 200 }}
+							key={x}
+							src={`http://localhost:8000/freefiles/images/${x}`}
+							alt={x}
+						/>
+					);
+				})
+			)}
 		</div>
 	);
 };

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { gql, useLazyQuery } from '@apollo/client';
+import { gql, useLazyQuery, useQuery } from '@apollo/client';
 
 import Box from '@mui/material/Box';
 
@@ -26,18 +26,18 @@ const Users = () => {
 	console.log(userData);
 	console.log(`Bearer ${userData.token}`);
 	const [loadedUsers, setLoadedUsers] = useState([]);
-
-	const [getUsers, { data }] = useLazyQuery(USERS_QUERY);
+	const { loading, error, data } = useQuery(USERS_QUERY);
+	//const [getUsers, { data }] = useLazyQuery(USERS_QUERY);
 
 	useEffect(() => {
 		try {
-			getUsers();
+			//getUsers();
 			setLoadedUsers(data.users);
 			console.log(data);
 		} catch (err) {
 			console.log(err);
 		}
-	}, [getUsers, data]);
+	}, [data]);
 
 	return (
 		<React.Fragment>

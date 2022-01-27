@@ -56,8 +56,9 @@ const resolvers = {
 				console.log(error);
 			}
 		},
-		users: async (parent, args, context, info) => {
+		users: async (parent, args, info) => {
 			try {
+				console.log('Getting Users');
 				const users = await User.find();
 				// console.log('Users List');
 				// console.log(users);
