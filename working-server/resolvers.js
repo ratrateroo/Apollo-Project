@@ -56,7 +56,7 @@ const resolvers = {
 				console.log(error);
 			}
 		},
-		users: async (parent, args, info) => {
+		users: async () => {
 			try {
 				console.log('Getting Users');
 				const users = await User.find();
@@ -64,6 +64,7 @@ const resolvers = {
 				// console.log(users);
 				// console.log(context.userId);
 				return users.map((user) => {
+					console.log(user._doc._id.toString());
 					return {
 						...user._doc,
 						_id: user._doc._id.toString(),
