@@ -26,18 +26,18 @@ const Users = () => {
 	console.log(userData);
 	console.log(`Bearer ${userData.token}`);
 	const [loadedUsers, setLoadedUsers] = useState([]);
-	const { loading, error, data } = useQuery(USERS_QUERY);
-	//const [getUsers, { data }] = useLazyQuery(USERS_QUERY);
+	//const { loading, error, data } = useQuery(USERS_QUERY);
+	const [getUsers, { data }] = useLazyQuery(USERS_QUERY);
 
 	useEffect(() => {
 		try {
-			//getUsers();
+			getUsers();
 			setLoadedUsers(data.users);
 			console.log(data);
 		} catch (err) {
 			console.log(err);
 		}
-	}, [data]);
+	}, [data, getUsers]);
 
 	return (
 		<React.Fragment>
