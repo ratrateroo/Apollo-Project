@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { gql, useLazyQuery, useQuery } from '@apollo/client';
+import { gql, useLazyQuery } from '@apollo/client';
 
 import Box from '@mui/material/Box';
 
@@ -26,7 +26,7 @@ const Users = () => {
 	console.log(userData);
 	console.log(`Bearer ${userData.token}`);
 	const [loadedUsers, setLoadedUsers] = useState([]);
-	//const { loading, error, data } = useQuery(USERS_QUERY);
+
 	const [getUsers, { data }] = useLazyQuery(USERS_QUERY);
 
 	useEffect(() => {
