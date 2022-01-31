@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { gql, useLazyQuery } from '@apollo/client';
 
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
 import Grid from '@mui/material/Grid';
 
@@ -27,7 +28,7 @@ const Users = () => {
 	console.log(`Bearer ${userData.token}`);
 	const [loadedUsers, setLoadedUsers] = useState([]);
 
-	const [getUsers, { data }] = useLazyQuery(USERS_QUERY);
+	const [getUsers, { data, loading, error }] = useLazyQuery(USERS_QUERY);
 
 	useEffect(() => {
 		try {
@@ -48,6 +49,16 @@ const Users = () => {
 						<UserCard username={user.}/>
 					</Grid>
                     }} */}
+					{loading && (
+						<Typography gutterBottom variant="h5" component="div">
+							Loading...
+						</Typography>
+					)}
+					{error && (
+						<Typography gutterBottom variant="h5" component="div">
+							Some error occured...
+						</Typography>
+					)}
 					{data &&
 						loadedUsers.map((user) => (
 							<Grid item key={user._id}>
