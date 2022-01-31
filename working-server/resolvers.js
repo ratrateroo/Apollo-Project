@@ -1,4 +1,6 @@
 require('dotenv').config();
+const mongoose = require('mongoose');
+
 const jwt = require('jsonwebtoken');
 const storeUpload = require('./storeUpload');
 const files = require('./files');
@@ -56,13 +58,26 @@ const resolvers = {
 				console.log(error);
 			}
 		},
-		users: async () => {
+		users: async (parent, args, context, info) => {
 			try {
 				console.log('Getting Users');
 				const users = await User.find();
+				const user = await User.findById(context.userId);
+				console.log('User: ');
+
+				const theUser = await User.find({
+					_id: context.userId,
+				});
+				console.log(theUser[0].username);
 				// console.log('Users List');
 				// console.log(users);
 				// console.log(context.userId);
+				if (!user) {
+					console.log('Unauthorized Request.');
+					return {
+						message: 'Unauthorized!',
+					};
+				}
 				return users.map((user) => {
 					console.log(user._doc._id.toString());
 					return {
