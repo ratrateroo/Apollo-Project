@@ -69,9 +69,7 @@ const resolvers = {
 					_id: context.userId,
 				});
 				console.log(theUser[0].username);
-				// console.log('Users List');
-				// console.log(users);
-				// console.log(context.userId);
+
 				if (!user) {
 					console.log('Unauthorized Request.');
 					return {
