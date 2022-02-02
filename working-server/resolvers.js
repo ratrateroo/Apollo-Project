@@ -65,6 +65,10 @@ const resolvers = {
 				const user = await User.findById(context.userId);
 				console.log('User: ');
 
+				if (!context.userId) {
+					console.log("Can't find context object.");
+				}
+
 				const theUser = await User.find({
 					_id: context.userId,
 				});
