@@ -107,10 +107,20 @@ const resolvers = {
 	Mutation: {
 		uploadFile: async (parent, { file }, context) => {
 			try {
-				await storeUpload(file, context).then(({ filename }) => {
-					console.log('Logging File Name');
-					console.log(filename);
-				});
+				const { filename, mimetype, encoding, stream } = await storeUpload(
+					file,
+					context
+				);
+
+				await User.updateOne(
+					{ _id: context.userId },
+					{ profileimage: filename }
+				)
+					.then((result) => {
+						console.log('Upload success');
+						return { filename, mimetype, encoding };
+					})
+					.catch((error) => console.log(error));
 			} catch (error) {
 				console.log(error);
 			}

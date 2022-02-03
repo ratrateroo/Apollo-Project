@@ -127,7 +127,7 @@ const UserProfile = (props) => {
 							<Paper elevation={3} sx={{ padding: '30px' }}>
 								<Avatar
 									alt="Remy Sharp"
-									src="http://localhost:8000/freefiles/images/jTU4SCd9Q70o.jpg"
+									src={`http://localhost:8000/freefiles/images/${data.user.profileimage}`}
 									sx={{ width: 250, height: 250 }}
 								/>
 								<Box
@@ -140,6 +140,9 @@ const UserProfile = (props) => {
 									}}>
 									<Typography component="h1" variant="h5">
 										{data.user.username}
+									</Typography>
+									<Typography component="h1" variant="h5">
+										{data.user.profileimage}
 									</Typography>
 
 									{userData.userId === uid && (
