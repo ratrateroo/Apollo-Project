@@ -127,7 +127,7 @@ const UserProfile = (props) => {
 							<Paper elevation={3} sx={{ padding: '30px' }}>
 								<Avatar
 									alt="Remy Sharp"
-									src="http://localhost:8000/freefiles/images/bk8iLAFWbuK5.jpg"
+									src="http://localhost:8000/freefiles/images/jTU4SCd9Q70o.jpg"
 									sx={{ width: 250, height: 250 }}
 								/>
 								<Box

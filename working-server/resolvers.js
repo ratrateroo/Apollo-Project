@@ -67,6 +67,15 @@ const resolvers = {
 
 				if (!context.userId) {
 					console.log("Can't find context object.");
+					return users.map((user) => {
+						console.log(user._doc._id.toString());
+						return {
+							...user._doc,
+							_id: user._doc._id.toString(),
+							username: user._doc.username,
+							profileimage: user._doc.profileimage,
+						};
+					});
 				}
 
 				const theUser = await User.find({
@@ -96,7 +105,16 @@ const resolvers = {
 		},
 	},
 	Mutation: {
-		uploadFile: (parent, { file }, context) => storeUpload(file, context),
+		uploadFile: async (parent, { file }, context) => {
+			try {
+				await storeUpload(file, context).then(({ filename }) => {
+					console.log('Logging File Name');
+					console.log(filename);
+				});
+			} catch (error) {
+				console.log(error);
+			}
+		},
 		signUpUser: async (parent, { userInput }) => {
 			console.log(userInput.username);
 			try {

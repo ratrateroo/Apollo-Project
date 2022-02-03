@@ -15,7 +15,6 @@ const apolloserver = new ApolloServer({
 			...req,
 
 			userId: req && req.headers.authorization ? getUserId(req) : null,
-			message: 'hello',
 		};
 	},
 });

@@ -28,9 +28,9 @@ const App = () => {
 					<Route
 						path="profile/:uid"
 						element={
-							<RequireAuth>
-								<UserProfile />
-							</RequireAuth>
+							//<RequireAuth>
+							<UserProfile />
+							//	</RequireAuth>
 						}
 					/>
 					<Route path="userlist" element={<UserList />} />
