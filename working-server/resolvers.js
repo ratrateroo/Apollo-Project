@@ -139,7 +139,7 @@ const resolvers = {
 				const user = new User({
 					username: userInput.username,
 
-					profileimage: 'defaultimage',
+					profileimage: 'user_dummy.png',
 				});
 
 				const result = await user.save();
