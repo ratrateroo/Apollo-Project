@@ -15,11 +15,17 @@ const authLink = setContext((_, { headers }) => {
 	const userData = getUserData();
 	console.log('Client');
 	console.log(`Bearer ${userData.token}`);
-
+	if (!userData.token) {
+		return {
+			headers: {
+				...headers,
+			},
+		};
+	}
 	return {
 		headers: {
 			...headers,
-			authorization: userData ? `Bearer ${userData.token}` : 'no-token',
+			authorization: userData ? `Bearer ${userData.token}` : '',
 		},
 	};
 });
@@ -38,7 +44,7 @@ const httpLink = new HttpLink({ uri: `http://localhost:8000/graphql` });
 // });
 
 export const client = new ApolloClient({
-	link: ApolloLink.from([httpLink, authLink, uploadLink]),
+	link: ApolloLink.from([authLink, uploadLink, httpLink]),
 	cache: new InMemoryCache(),
 });
 
