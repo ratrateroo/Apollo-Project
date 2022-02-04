@@ -167,7 +167,7 @@ const UserProfile = (props) => {
 
 									<Avatar
 										alt="Remy Sharp"
-										src="https://i.pravatar.cc/250"
+										src={`http://localhost:8000/freefiles/images/${data.user.profileimage}`}
 										sx={{ width: 250, height: 250 }}
 									/>
 									<Input
