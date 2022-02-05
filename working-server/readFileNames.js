@@ -22,16 +22,5 @@ const readFileNames = () => {
 	});
 	console.log('returning files');
 	return myfiles;
-	// let listItems = [];
-	// fs.readdir(folderName, (err, items) => {
-	// 	const list = [];
-	// 	items.forEach((file) => {
-	// 		list.push(file);
-	// 	});
-
-	// 	listItems = list;
-	// });
-	// console.log(listItems);
-	// return listItems;
 };
 module.exports = readFileNames;

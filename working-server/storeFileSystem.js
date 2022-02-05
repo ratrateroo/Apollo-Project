@@ -22,18 +22,12 @@ const storeFileSystem = async ({ stream, filename, mimetype, encoding }) => {
 	const storedFileName = generateRandomString(12) + ext;
 
 	const newurl = new URL(path.join(__dirname, './public/images'));
-	// console.log(newurl.href);
-	// console.log(new URL(path.join(__dirname, './public/images')).href);
 
 	//storedFileUrl - file upload directory + filename
 	const storedFileUrl = path.join(
 		__dirname,
 		`./public/images/${storedFileName}`
 	);
-
-	// console.log(storedFileName);
-	// console.log(storedFileUrl);
-	// console.log(stream);
 
 	//Store the file in the filesystem.
 	await new Promise((resolve, reject) => {
