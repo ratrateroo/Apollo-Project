@@ -2,7 +2,7 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
+
 import Button from '@mui/material/Button';
 
 import AppBar from '@mui/material/AppBar';
@@ -33,7 +33,6 @@ const theme = createTheme({
 });
 
 const Navigation = () => {
-	const userData = getUserData();
 	return (
 		<React.Fragment>
 			<ThemeProvider theme={theme}>
