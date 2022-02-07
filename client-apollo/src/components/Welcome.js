@@ -16,7 +16,7 @@ const Welcome = () => {
 		<React.Fragment>
 			<ThemeProvider theme={customtheme}>
 				<Box sx={{ width: '100%', maxWidth: 'lg' }}></Box>
-				<Typography gutterBottom variant="h5" component="div">
+				<Typography gutterBottom variant="body2" primary component="div">
 					Loading...
 				</Typography>
 			</ThemeProvider>

@@ -22,5 +22,22 @@ const theme = createTheme({
 		// E.g., shift from Red 500 to Red 300 or Red 700.
 		tonalOffset: 0.2,
 	},
+	typography: {
+		subtitle1: {
+			fontSize: 12,
+		},
+		subtitle2: {
+			color: 'red',
+		},
+		body2: {
+			color: theme.palette.primary,
+		},
+		body1: {
+			fontWeight: 500,
+		},
+		button: {
+			fontStyle: 'italic',
+		},
+	},
 });
 export default theme;
