@@ -5,13 +5,21 @@ import Typography from '@mui/material/Typography';
 
 import { getUserData } from '../util/userData';
 
+import customtheme from '../theme/custometheme';
+
+import { ThemeProvider } from '@mui/material/styles';
 const Welcome = () => {
 	const userData = getUserData();
 	console.log(userData);
 
 	return (
 		<React.Fragment>
-			<Box sx={{ width: '100%', maxWidth: 'lg' }}></Box>
+			<ThemeProvider theme={customtheme}>
+				<Box sx={{ width: '100%', maxWidth: 'lg' }}></Box>
+				<Typography gutterBottom variant="h5" component="div">
+					Loading...
+				</Typography>
+			</ThemeProvider>
 		</React.Fragment>
 	);
 };
