@@ -8,15 +8,31 @@ import { getUserData } from '../util/userData';
 import customtheme from '../theme/custometheme';
 
 import { ThemeProvider } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles(() => {
+	return {
+		text: {
+			background: customtheme.palette.secondary.main,
+
+			color: 'white',
+		},
+	};
+});
 const Welcome = () => {
 	const userData = getUserData();
+	const classes = useStyles();
 	console.log(userData);
 
 	return (
 		<React.Fragment>
 			<ThemeProvider theme={customtheme}>
 				<Box sx={{ width: '100%', maxWidth: 'lg' }}></Box>
-				<Typography gutterBottom variant="body2" primary component="div">
+				<Typography
+					gutterBottom
+					variant="body2"
+					component="div"
+					className={classes.text}>
 					Loading...
 				</Typography>
 				<Typography component="div" variant="h3">
