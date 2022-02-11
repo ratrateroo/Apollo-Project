@@ -14,6 +14,46 @@ const theme = createTheme({
 			// dark: will be calculated from palette.secondary.main,
 			contrastText: '#ffcc00',
 		},
+		//morecolors
+		cadetblue: {
+			main: '#51a3a3',
+		},
+		aztecgold: {
+			main: '#cb904d',
+		},
+		deepspacesparcle: {
+			main: '#466362',
+		},
+		straw: {
+			main: '#dfcc74',
+		},
+		mediumspringbud: {
+			main: '#c3e991',
+		},
+
+		carlstongreen: {
+			main: '#2d2d2a',
+		},
+		honeydew: {
+			main: '#f1f7ee',
+		},
+		englishgreen: {
+			main: '#19535f',
+		},
+		eggshell: {
+			main: '#eaf0ce',
+		},
+		sheldonblue: {
+			main: '#7d98a1',
+		},
+
+		darksmoke: {
+			main: '#707070',
+		},
+		redwine: {
+			main: '#e92424',
+		},
+
 		// Used by `getContrastText()` to maximize the contrast between
 		// the background and the text.
 		contrastThreshold: 3,
