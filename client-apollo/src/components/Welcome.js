@@ -36,16 +36,28 @@ const Welcome = () => {
 					Loading...
 				</Typography>
 				<Typography component="div" variant="h3">
-					<Box sx={{ color: 'primary.main' }}>primary.main</Box>
-					<Box sx={{ color: 'primary.light' }}>primary.light</Box>
-					<Box sx={{ color: 'primary.dark' }}>primary.dark</Box>
-					<Box sx={{ color: 'secondary.main' }}>secondary.main</Box>
-					<Box sx={{ color: 'secondary.light' }}>secondary.light</Box>
-					<Box sx={{ color: 'secondary.dark' }}>secondary.dark</Box>
+					<Box
+						sx={{
+							bgcolor: 'cadetblue.main',
+							color: 'cadetblue.contrastText',
+						}}>
+						Cadet Blue
+					</Box>
+					<Box
+						sx={{
+							bgcolor: 'aztecgold.main',
+							color: 'aztecgold.contrastText',
+						}}>
+						Aztec Gold
+					</Box>
 
-					<Box sx={{ color: 'tertiary.main' }}>tertiary.main</Box>
-					<Box sx={{ color: 'tertiary.light' }}>tertiary.light</Box>
-					<Box sx={{ color: 'tertiary.dark' }}>tertiary.dark</Box>
+					<Box
+						sx={{
+							bgcolor: 'deepspacesparcle.main',
+							color: 'deepspacesparcle.contrastText',
+						}}>
+						Deep Space Sparcle
+					</Box>
 
 					<Box sx={{ color: 'error.main' }}>error.main</Box>
 					<Box sx={{ color: 'warning.main' }}>warning.main</Box>
