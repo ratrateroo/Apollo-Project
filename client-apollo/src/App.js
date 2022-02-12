@@ -23,7 +23,7 @@ const App = () => {
 	return (
 		<ThemeProvider theme={theme}>
 			<React.Fragment>
-				<Navigation colorMode={colorMode.toggleColorMode} />
+				<Navigation colorMode={colorMode} />
 				<Container>
 					<Routes>
 						<Route path="/" element={<Welcome />} />

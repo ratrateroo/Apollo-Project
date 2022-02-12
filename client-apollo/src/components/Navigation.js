@@ -35,7 +35,7 @@ const theme = createTheme({
 	},
 });
 
-const Navigation = () => {
+const Navigation = ({ colorMode }) => {
 	return (
 		<React.Fragment>
 			<ThemeProvider theme={theme}>
@@ -101,7 +101,9 @@ const Navigation = () => {
 								component={RouterLink}>
 								Log In User
 							</Button>
-							<IconButton color="inherit">
+							<IconButton
+								color="inherit"
+								onClick={colorMode.toggleColorMode}>
 								{/* <Brightness7Icon /> */}
 
 								<Brightness4Icon />
