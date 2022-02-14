@@ -3,6 +3,8 @@ import { ColorModeContext } from './ColorModeContext';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import theme from '../theme/theme';
+import lighttheme from '../theme/lighttheme';
+import darktheme from '../theme/darktheme';
 
 const ColorModeProvider = ({ children }) => {
 	const [mode, setMode] = useState('light');
@@ -25,6 +27,10 @@ const ColorModeProvider = ({ children }) => {
 	// 		}),
 	// 	[mode]
 	// );
+
+	const theme = useMemo(() => {
+		return mode === 'light' ? lighttheme : darktheme;
+	}, [mode]);
 
 	let value;
 	return (
