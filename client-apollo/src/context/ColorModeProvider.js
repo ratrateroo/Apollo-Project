@@ -1,6 +1,9 @@
 import { useState, useMemo } from 'react';
 import { ColorModeContext } from './ColorModeContext';
 
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import theme from '../theme/theme';
+
 const ColorModeProvider = ({ children }) => {
 	const [mode, setMode] = useState('light');
 
@@ -13,10 +16,20 @@ const ColorModeProvider = ({ children }) => {
 		[]
 	);
 
+	// const theme = useMemo(
+	// 	() =>
+	// 		createTheme({
+	// 			palette: {
+	// 				mode,
+	// 			},
+	// 		}),
+	// 	[mode]
+	// );
+
 	let value;
 	return (
 		<ColorModeContext.Provider value={colorMode}>
-			{children}
+			<ThemeProvider theme={theme}>{children}</ThemeProvider>
 		</ColorModeContext.Provider>
 	);
 };

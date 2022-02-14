@@ -18,100 +18,77 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 import { lightGreen } from '@mui/material/colors';
 
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
 import { getUserData } from '../util/userData';
-
-const theme = createTheme({
-	palette: {
-		primary: {
-			// Purple and green play nicely together.
-			main: lightGreen[900],
-		},
-		secondary: {
-			// This is green.A700 as hex.
-			main: '#11cb5f',
-		},
-	},
-});
 
 const Navigation = ({ colorMode }) => {
 	return (
 		<React.Fragment>
-			<ThemeProvider theme={theme}>
-				<Box sx={{ flexGrow: 1 }}>
-					<AppBar position="static" color="primary">
-						<Toolbar>
-							<IconButton
-								size="large"
-								edge="start"
-								color="inherit"
-								aria-label="menu"
-								sx={{ mr: 2 }}>
-								<MenuIcon />
-							</IconButton>
-							<Typography
-								variant="h6"
-								component="div"
-								sx={{ flexGrow: 1 }}></Typography>
-							<Button color="inherit" to="/" component={RouterLink}>
-								Home
-							</Button>
-							<Button color="inherit" to="/files" component={RouterLink}>
-								Files
-							</Button>
+			<Box sx={{ flexGrow: 1 }}>
+				<AppBar position="static" color="primary">
+					<Toolbar>
+						<IconButton
+							size="large"
+							edge="start"
+							color="inherit"
+							aria-label="menu"
+							sx={{ mr: 2 }}>
+							<MenuIcon />
+						</IconButton>
+						<Typography
+							variant="h6"
+							component="div"
+							sx={{ flexGrow: 1 }}></Typography>
+						<Button color="inherit" to="/" component={RouterLink}>
+							Home
+						</Button>
+						<Button color="inherit" to="/files" component={RouterLink}>
+							Files
+						</Button>
 
-							{getUserData.token && (
-								<Button
-									color="inherit"
-									to="/profile"
-									component={RouterLink}>
-									Profile
-								</Button>
-							)}
-
-							<Button color="inherit" to="/users" component={RouterLink}>
-								Users
-							</Button>
+						{getUserData.token && (
 							<Button
 								color="inherit"
-								to="/userlist"
+								to="/profile"
 								component={RouterLink}>
-								User List
+								Profile
 							</Button>
-							<Button
-								color="inherit"
-								to="/signup"
-								component={RouterLink}>
-								Sign Up
-							</Button>
-							<Button
-								color="inherit"
-								to="/signupuser"
-								component={RouterLink}>
-								Sign Up User
-							</Button>
+						)}
 
-							<Button color="inherit" to="/login" component={RouterLink}>
-								Log In
-							</Button>
-							<Button
-								color="inherit"
-								to="/loginuser"
-								component={RouterLink}>
-								Log In User
-							</Button>
-							<IconButton
-								color="inherit"
-								onClick={colorMode.toggleColorMode}>
-								{/* <Brightness7Icon /> */}
+						<Button color="inherit" to="/users" component={RouterLink}>
+							Users
+						</Button>
+						<Button color="inherit" to="/userlist" component={RouterLink}>
+							User List
+						</Button>
+						<Button color="inherit" to="/signup" component={RouterLink}>
+							Sign Up
+						</Button>
+						<Button
+							color="inherit"
+							to="/signupuser"
+							component={RouterLink}>
+							Sign Up User
+						</Button>
 
-								<Brightness4Icon />
-							</IconButton>
-						</Toolbar>
-					</AppBar>
-				</Box>
-			</ThemeProvider>
+						<Button color="inherit" to="/login" component={RouterLink}>
+							Log In
+						</Button>
+						<Button
+							color="inherit"
+							to="/loginuser"
+							component={RouterLink}>
+							Log In User
+						</Button>
+						<IconButton
+							color="inherit"
+							onClick={colorMode.toggleColorMode}>
+							{/* <Brightness7Icon /> */}
+
+							<Brightness4Icon />
+						</IconButton>
+					</Toolbar>
+				</AppBar>
+			</Box>
 		</React.Fragment>
 	);
 };
