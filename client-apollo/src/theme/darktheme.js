@@ -4,22 +4,44 @@ const darktheme = createTheme({
 	palette: {
 		mode: 'dark',
 		primary: {
-			main: '#2d4a47',
+			main: '#346664',
+			light: '#3C8785',
+			dark: '#2D4A47',
+			contrastText: '#ffffff',
 		},
 		secondary: {
-			main: '#aa673f',
+			main: '#DDB573',
+			light: '#EFDEBF',
+			dark: '#CB904D',
+			contrastText: '#ffffff',
 		},
 		error: {
-			main: '#f34642',
+			main: '#F34642',
+			light: '#F39593',
+			dark: '#E92424',
+			contrastText: '#ffffff',
 		},
 		success: {
-			main: '#96cc56',
+			main: '#A7DD5F',
+			light: '#C3E991',
+			dark: '#81B74B',
+			contrastText: '#000000',
 		},
 		warning: {
-			main: '#ece0aa',
+			main: '#CCAB00',
+			light: '#dfcb74',
+			dark: '#c69d00',
+			contrastText: '#000000',
 		},
 		info: {
-			main: '#608786',
+			main: '#afc5c3',
+			light: '#cedcdb',
+			dark: '#90adab',
+			contrastText: '#000000',
+		},
+		background: {
+			default: '#6f6e6e',
+			paper: '#2f2f2f',
 		},
 		// Used by `getContrastText()` to maximize the contrast between
 		// the background and the text.

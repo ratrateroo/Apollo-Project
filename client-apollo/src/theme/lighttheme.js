@@ -39,6 +39,10 @@ const lighttheme = createTheme({
 			dark: '#384F4F',
 			contrastText: '#ffffff',
 		},
+		background: {
+			default: '#ffffff',
+			paper: '#ffffff',
+		},
 		// Used by `getContrastText()` to maximize the contrast between
 		// the background and the text.
 		contrastThreshold: 3,
