@@ -40,8 +40,8 @@ const darktheme = createTheme({
 			contrastText: '#000000',
 		},
 		background: {
-			default: '#6f6e6e',
-			paper: '#2f2f2f',
+			default: '#353131',
+			paper: '#346664',
 		},
 		// Used by `getContrastText()` to maximize the contrast between
 		// the background and the text.
